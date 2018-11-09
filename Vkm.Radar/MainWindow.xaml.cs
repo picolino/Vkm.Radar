@@ -4,7 +4,7 @@ using System.Windows;
 
 #endregion
 
-namespace Vkm.Radar.View
+namespace Vkm.Radar
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
