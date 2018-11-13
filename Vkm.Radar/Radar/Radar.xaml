@@ -27,9 +27,9 @@
             Stroke="Black"
             StrokeThickness="3" />
         <Canvas Grid.RowSpan="3" Grid.ColumnSpan="3">
-            <Line Canvas.Top="250" 
+            <Line Canvas.Top="0" 
                   Canvas.Left="250" 
-                  RenderTransformOrigin="0 0"
+                  RenderTransformOrigin="1 1"
                   X1="0" Y1="250"
                   StrokeThickness="2"
                   Stroke="GreenYellow">
