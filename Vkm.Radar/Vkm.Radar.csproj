@@ -72,8 +72,9 @@
     <Compile Include="Radar\Radar.xaml.cs">
       <DependentUpon>Radar.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Radar\RadarComponents\ViewModel\NoiseViewModel.cs" />
     <Compile Include="Radar\ViewModel\RadarViewModel.cs" />
-    <Compile Include="TargetViewModel.cs" />
+    <Compile Include="Radar\RadarComponents\ViewModel\TargetViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -111,8 +112,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Radar\RadarComponents\ViewModel\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
