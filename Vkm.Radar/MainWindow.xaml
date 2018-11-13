@@ -6,11 +6,18 @@
         xmlns:viewModel="clr-namespace:Vkm.Radar.ViewModel"
         xmlns:radar="clr-namespace:Vkm.Radar.Radar"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Vkm.Radar" 
+        ResizeMode="NoResize"
+        Height="800" 
+        Width="550">
     <Window.DataContext>
         <viewModel:MainWindowViewModel/>
     </Window.DataContext>
     <Grid>
-        <radar:Radar/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <radar:Radar Grid.Row="0" Margin="10"/>
     </Grid>
 </Window>

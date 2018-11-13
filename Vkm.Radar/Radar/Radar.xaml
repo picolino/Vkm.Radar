@@ -9,26 +9,24 @@
     <UserControl.DataContext>
         <viewModel:RadarViewModel />
     </UserControl.DataContext>
-    <Grid>
-        <Grid Width="{Binding Path=RadarDiameter}" Height="{Binding Path=RadarDiameter}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition Width="1" />
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition Height="1"/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <Ellipse
+    <Grid Width="500" Height="500">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="1" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="1" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Ellipse
             Grid.ColumnSpan="3"
             Grid.RowSpan="3"
             Fill="DarkGreen"
             Stroke="Black"
-            StrokeThickness="3"/>
-            <Rectangle Fill="Black" IsHitTestVisible="False" Grid.Column="1" Grid.RowSpan="3"/>
-            <Rectangle Fill="Black" IsHitTestVisible="False" Grid.Row="1" Grid.ColumnSpan="3"/>
-        </Grid>
+            StrokeThickness="3" />
+        <Rectangle Fill="Black" IsHitTestVisible="False" Grid.Column="1" Grid.RowSpan="3" />
+        <Rectangle Fill="Black" IsHitTestVisible="False" Grid.Row="1" Grid.ColumnSpan="3" />
     </Grid>
 </UserControl>
