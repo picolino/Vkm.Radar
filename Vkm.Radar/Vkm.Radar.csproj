@@ -73,6 +73,7 @@
       <DependentUpon>Radar.xaml</DependentUpon>
     </Compile>
     <Compile Include="Radar\ViewModel\RadarViewModel.cs" />
+    <Compile Include="TargetViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

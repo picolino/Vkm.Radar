@@ -34,7 +34,7 @@
                   StrokeThickness="2"
                   Stroke="GreenYellow">
                 <Line.RenderTransform>
-                    <RotateTransform Angle="{Binding Path=LineRotationDegrees}"/>
+                    <RotateTransform Angle="{Binding Path=LineAzimuth}"/>
                 </Line.RenderTransform>
             </Line>
         </Canvas>

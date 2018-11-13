@@ -7,25 +7,25 @@ namespace Vkm.Radar.Radar.ViewModel
     {
         public RadarViewModel()
         {
-            LineRotationDegrees = 0;
-            Task.Run(LaunchLineRotation);
+            LineAzimuth = 0;
+            Task.Run(LaunchLineScanning);
         }
 
-        public double LineRotationDegrees
+        public double LineAzimuth
         {
-            get { return GetProperty(() => LineRotationDegrees); }
-            set { SetProperty(() => LineRotationDegrees, value); }
+            get { return GetProperty(() => LineAzimuth); }
+            set { SetProperty(() => LineAzimuth, value); }
         }
 
-        private async Task LaunchLineRotation()
+        private async Task LaunchLineScanning()
         {
             while (true)
             {
                 await Task.Delay(1);
-                LineRotationDegrees += 1;
-                if (LineRotationDegrees > 360)
+                LineAzimuth += 1;
+                if (LineAzimuth > 360)
                 {
-                    LineRotationDegrees = 0;
+                    LineAzimuth = 0;
                 }
             }
         }
