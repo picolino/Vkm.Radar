@@ -1,4 +1,6 @@
-﻿using DevExpress.Mvvm;
+﻿using System;
+using System.Threading.Tasks;
+using DevExpress.Mvvm;
 
 namespace Vkm.Radar.Radar.ViewModel
 {
@@ -6,6 +8,27 @@ namespace Vkm.Radar.Radar.ViewModel
     {
         public RadarViewModel()
         {
+            LineRotationDegrees = 180;
+            Task.Run(LaunchLineRotation);
+        }
+
+        public double LineRotationDegrees
+        {
+            get { return GetProperty(() => LineRotationDegrees); }
+            set { SetProperty(() => LineRotationDegrees, value); }
+        }
+
+        private async Task LaunchLineRotation()
+        {
+            while (true)
+            {
+                await Task.Delay(1);
+                LineRotationDegrees += 1;
+                if (LineRotationDegrees > 360)
+                {
+                    LineRotationDegrees = 0;
+                }
+            }
         }
     }
 }

@@ -9,7 +9,7 @@
     <UserControl.DataContext>
         <viewModel:RadarViewModel />
     </UserControl.DataContext>
-    <Grid Width="500" Height="500">
+    <Grid Width="500" Height="500" SnapsToDevicePixels="True">
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition Width="1" />
@@ -26,6 +26,18 @@
             Fill="DarkGreen"
             Stroke="Black"
             StrokeThickness="3" />
+        <Canvas Grid.RowSpan="3" Grid.ColumnSpan="3">
+            <Line Canvas.Top="250" 
+                  Canvas.Left="250" 
+                  RenderTransformOrigin="0 0"
+                  X1="0" Y1="250"
+                  StrokeThickness="2"
+                  Stroke="GreenYellow">
+                <Line.RenderTransform>
+                    <RotateTransform Angle="{Binding Path=LineRotationDegrees}"/>
+                </Line.RenderTransform>
+            </Line>
+        </Canvas>
         <Rectangle Fill="Black" IsHitTestVisible="False" Grid.Column="1" Grid.RowSpan="3" />
         <Rectangle Fill="Black" IsHitTestVisible="False" Grid.Row="1" Grid.ColumnSpan="3" />
     </Grid>
