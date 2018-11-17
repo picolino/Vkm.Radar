@@ -46,11 +46,15 @@ namespace Vkm.Radar.Radar.ViewModel
 
         private void LineStep()
         {
-            LineAzimuth += 1;
             if (LineAzimuth > 360)
             {
                 LineAzimuth = 0;
             }
+            else
+            {
+                LineAzimuth += 1;
+            }
+            
         }
     }
 }
