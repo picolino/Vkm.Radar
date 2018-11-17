@@ -1,9 +1,16 @@
-﻿using DevExpress.Mvvm;
+﻿using System;
+using DevExpress.Mvvm;
 
 namespace Vkm.Radar.Radar.RadarComponents.ViewModel
 {
     public class TargetViewModel : ViewModelBase
     {
+        [Obsolete("Needs for designer only")]
+        public TargetViewModel()
+        {
+            
+        }
+
         public TargetViewModel(double azimuth, double range, double width)
         {
             Azimuth = azimuth;

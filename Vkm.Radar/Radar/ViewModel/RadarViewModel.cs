@@ -11,7 +11,10 @@ namespace Vkm.Radar.Radar.ViewModel
         {
             LineAzimuth = 0;
 
-            TargetsCollection = new ObservableCollection<TargetViewModel>();
+            TargetsCollection = new ObservableCollection<TargetViewModel>
+                                {
+                                    new TargetViewModel(60, 100, 20)
+                                };
             NoisesCollection = new ObservableCollection<NoiseViewModel>();
 
             Task.Run(LaunchLineScanning);
