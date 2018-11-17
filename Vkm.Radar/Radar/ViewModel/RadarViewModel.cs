@@ -35,6 +35,7 @@ namespace Vkm.Radar.Radar.ViewModel
 
         private void CheckTarget()
         {
+            //Статья с видами индикаторов рлс при постановке различных видов помех: https://studfiles.net/preview/1430298/page:8/
             // TODO: Обнаружение цели
             // TODO: Обнаружение ложных целей
             // TODO: Обнаружение помехи
