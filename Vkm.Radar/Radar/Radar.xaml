@@ -4,6 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:viewModel="clr-namespace:Vkm.Radar.Radar.ViewModel"
+             xmlns:components="clr-namespace:Vkm.Radar.Radar.RadarComponents"
+             xmlns:componentsVM="clr-namespace:Vkm.Radar.Radar.RadarComponents.ViewModel"
              mc:Ignorable="d"
              d:DesignHeight="500" d:DesignWidth="500">
     <UserControl.DataContext>
@@ -20,24 +22,37 @@
             <RowDefinition Height="1" />
             <RowDefinition />
         </Grid.RowDefinitions>
+
         <Ellipse
             Grid.ColumnSpan="3"
             Grid.RowSpan="3"
             Fill="DarkGreen"
             Stroke="Black"
             StrokeThickness="3" />
-        <Canvas Grid.RowSpan="3" Grid.ColumnSpan="3">
-            <Line Canvas.Top="0" 
-                  Canvas.Left="250" 
-                  RenderTransformOrigin="1 1"
-                  X1="0" Y1="250"
-                  StrokeThickness="2"
-                  Stroke="GreenYellow">
-                <Line.RenderTransform>
-                    <RotateTransform Angle="{Binding Path=LineAzimuth}"/>
-                </Line.RenderTransform>
-            </Line>
-        </Canvas>
+
+        <ItemsControl Grid.RowSpan="3" Grid.ColumnSpan="3" ItemsSource="{Binding TargetsCollection}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Canvas x:Name="PART_Canvas"
+                            ClipToBounds="True"
+                            SnapsToDevicePixels="True"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemContainerStyle>
+                <Style TargetType="ContentPresenter">
+                    <Setter Property="Canvas.Top" Value="{Binding Path=PosTop}" />
+                    <Setter Property="Canvas.Left" Value="{Binding Path=PosLeft}" />
+                </Style>
+            </ItemsControl.ItemContainerStyle>
+            <ItemsControl.Resources>
+                <DataTemplate DataType="{x:Type componentsVM:ScanLineViewModel}">
+                    <components:ScanLine Tag="{Binding ElementName=PART_Canvas}" />
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type componentsVM:TargetViewModel}">
+                    <components:Target Tag="{Binding ElementName=PART_Canvas}" />
+                </DataTemplate>
+            </ItemsControl.Resources>
+        </ItemsControl>
         <Rectangle Fill="Black" IsHitTestVisible="False" Grid.Column="1" Grid.RowSpan="3" />
         <Rectangle Fill="Black" IsHitTestVisible="False" Grid.Row="1" Grid.ColumnSpan="3" />
     </Grid>

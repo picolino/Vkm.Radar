@@ -3,12 +3,12 @@ using DevExpress.Mvvm;
 
 namespace Vkm.Radar.Radar.RadarComponents.ViewModel
 {
-    public class TargetViewModel : ViewModelBase
+    public class TargetViewModel : ViewModelBase, IPositionalComponent
     {
         [Obsolete("Needs for designer only")]
         public TargetViewModel()
         {
-            
+
         }
 
         public TargetViewModel(double azimuth, double range, double width)
@@ -35,5 +35,8 @@ namespace Vkm.Radar.Radar.RadarComponents.ViewModel
             get { return GetProperty(() => Width); }
             set { SetProperty(() => Width, value); }
         }
+
+        public int PosTop => Convert.ToInt32(Range * Math.Sin(Azimuth / 180d *Math.PI)) + 250;
+        public int PosLeft => Convert.ToInt32(Range * Math.Cos(Azimuth / 180d * Math.PI)) + 250;
     }
 }

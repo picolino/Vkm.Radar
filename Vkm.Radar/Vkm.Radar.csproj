@@ -69,13 +69,19 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Radar\Constants.cs" />
     <Compile Include="Radar\Radar.xaml.cs">
       <DependentUpon>Radar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Radar\RadarComponents\ScanLine.xaml.cs">
+      <DependentUpon>ScanLine.xaml</DependentUpon>
     </Compile>
     <Compile Include="Radar\RadarComponents\Target.xaml.cs">
       <DependentUpon>Target.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Radar\RadarComponents\ViewModel\IPositionalComponent.cs" />
     <Compile Include="Radar\RadarComponents\ViewModel\NoiseViewModel.cs" />
+    <Compile Include="Radar\RadarComponents\ViewModel\ScanLineViewModel.cs" />
     <Compile Include="Radar\ViewModel\RadarViewModel.cs" />
     <Compile Include="Radar\RadarComponents\ViewModel\TargetViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
@@ -84,6 +90,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Radar\Radar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Radar\RadarComponents\ScanLine.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
