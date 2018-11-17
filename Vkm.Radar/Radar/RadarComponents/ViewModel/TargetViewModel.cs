@@ -4,12 +4,11 @@ namespace Vkm.Radar.Radar.RadarComponents.ViewModel
 {
     public class TargetViewModel : ViewModelBase
     {
-        public TargetViewModel(double azimuth, double range, double width, NoiseViewModel noise = null)
+        public TargetViewModel(double azimuth, double range, double width)
         {
             Azimuth = azimuth;
             Range = range;
             Width = width;
-            Noise = noise;
         }
 
         public double Azimuth
@@ -28,12 +27,6 @@ namespace Vkm.Radar.Radar.RadarComponents.ViewModel
         {
             get { return GetProperty(() => Width); }
             set { SetProperty(() => Width, value); }
-        }
-
-        public NoiseViewModel Noise
-        {
-            get { return GetProperty(() => Noise); }
-            set { SetProperty(() => Noise, value); }
         }
     }
 }
