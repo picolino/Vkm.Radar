@@ -3,5 +3,6 @@
     public interface IDetectableComponent
     {
         void WhenDetected();
+        double Azimuth { get; set; }
     }
 }

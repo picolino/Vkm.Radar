@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using DevExpress.Mvvm;
 
 namespace Vkm.Radar.Radar.RadarComponents.ViewModel
@@ -41,7 +42,7 @@ namespace Vkm.Radar.Radar.RadarComponents.ViewModel
 
         public void WhenDetected()
         {
-
+            Debug.WriteLine("Target was find!");
         }
     }
 }
