@@ -28,8 +28,8 @@ namespace Vkm.Radar.Radar.RadarComponents.ViewModel
             CheckTarget();
         }
 
-        public int PosTop => Convert.ToInt32(Constants.RadarCenter.Y);
-        public int PosLeft => Convert.ToInt32(Constants.RadarCenter.X);
+        public double PosTop => Constants.RadarCenter.Y;
+        public double PosLeft => Constants.RadarCenter.X;
 
         public double LineAzimuth
         {
@@ -43,6 +43,8 @@ namespace Vkm.Radar.Radar.RadarComponents.ViewModel
             // TODO: Обнаружение цели
             // TODO: Обнаружение ложных целей
             // TODO: Обнаружение помехи
+
+
         }
 
         private void LineStep()

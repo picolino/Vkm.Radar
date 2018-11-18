@@ -8,13 +8,21 @@ namespace Vkm.Radar.Radar.ViewModel
     {
         public RadarViewModel()
         {
-            Components = new ObservableCollection<IPositionalComponent>
-                                {
-                                    new ScanLineViewModel(),
-                                    new TargetViewModel(120, 230, 10),
-                                };
+            Components = new ObservableCollection<IPositionalComponent>();
+            InitializeBaseComponents();
+            InitializeTargets();
         }
 
         public ObservableCollection<IPositionalComponent> Components { get; }
+
+        private void InitializeBaseComponents()
+        {
+            Components.Add(new ScanLineViewModel());
+        }
+
+        private void InitializeTargets()
+        {
+            Components.Add(new TargetViewModel(120, 230, 10));
+        }
     }
 }

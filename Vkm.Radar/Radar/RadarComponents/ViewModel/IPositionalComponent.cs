@@ -2,7 +2,7 @@
 {
     public interface IPositionalComponent
     {
-        int PosTop { get; }
-        int PosLeft { get; }
+        double PosTop { get; }
+        double PosLeft { get; }
     }
 }
