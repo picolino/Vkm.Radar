@@ -1,16 +1,31 @@
 ﻿using System;
-using System.Threading.Tasks;
+using System.Timers;
 using DevExpress.Mvvm;
 
 namespace Vkm.Radar.Radar.RadarComponents.ViewModel
 {
     public class ScanLineViewModel : ViewModelBase, IPositionalComponent
     {
+        private Timer timer;
+
         public ScanLineViewModel()
         {
+            Initialize();
+            timer.Start();
+        }
+
+        private void Initialize()
+        {
             LineAzimuth = 0;
-            
-            Task.Run(LaunchLineScanning);
+
+            timer = new Timer(10);
+            timer.Elapsed += TimerOnElapsed;
+        }
+
+        private void TimerOnElapsed(object sender, ElapsedEventArgs e)
+        {
+            LineStep();
+            CheckTarget();
         }
 
         public int PosTop => Convert.ToInt32(Constants.RadarCenter.Y);
@@ -20,16 +35,6 @@ namespace Vkm.Radar.Radar.RadarComponents.ViewModel
         {
             get { return GetProperty(() => LineAzimuth); }
             set { SetProperty(() => LineAzimuth, value); }
-        }
-
-        private async Task LaunchLineScanning()
-        {
-            while (true)
-            {
-                await Task.Delay(1);
-                LineStep();
-                CheckTarget();
-            }
         }
 
         private void CheckTarget()
@@ -50,7 +55,6 @@ namespace Vkm.Radar.Radar.RadarComponents.ViewModel
             {
                 LineAzimuth += 1;
             }
-
         }
     }
 }
