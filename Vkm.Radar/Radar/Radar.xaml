@@ -30,7 +30,7 @@
             Stroke="Black"
             StrokeThickness="3" />
 
-        <ItemsControl Grid.RowSpan="3" Grid.ColumnSpan="3" ItemsSource="{Binding TargetsCollection}">
+        <ItemsControl Grid.RowSpan="3" Grid.ColumnSpan="3" ItemsSource="{Binding Components}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <Canvas x:Name="PART_Canvas"
