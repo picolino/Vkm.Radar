@@ -3,7 +3,7 @@ using DevExpress.Mvvm;
 
 namespace Vkm.Radar.Radar.RadarComponents.ViewModel
 {
-    public class TargetViewModel : ViewModelBase, IPositionalComponent
+    public class TargetViewModel : ViewModelBase, IPositionalComponent, IDetectableComponent
     {
         [Obsolete("Needs for designer only")]
         public TargetViewModel()
@@ -38,5 +38,10 @@ namespace Vkm.Radar.Radar.RadarComponents.ViewModel
 
         public double PosTop => Range * Math.Sin(Azimuth / 180d *Math.PI) + Constants.RadarCenterY;
         public double PosLeft => Range * Math.Cos(Azimuth / 180d * Math.PI) + Constants.RadarCenterX;
+
+        public void WhenDetected()
+        {
+
+        }
     }
 }
