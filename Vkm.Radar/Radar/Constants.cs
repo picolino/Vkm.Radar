@@ -4,6 +4,11 @@ namespace Vkm.Radar.Radar
 {
     public class Constants
     {
-        public static Point RadarCenter = new Point(250, 250);
+        public const double RadarCenterX = 250;
+        public const double RadarCenterY = 250;
+        public const double RadarRadius = 250;
+
+        public static double RadarDiameter => RadarRadius * 2;
+        public static Point RadarCenter => new Point(RadarCenterX, RadarCenterY);
     }
 }

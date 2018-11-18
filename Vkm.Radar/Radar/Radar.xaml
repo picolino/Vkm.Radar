@@ -6,12 +6,13 @@
              xmlns:viewModel="clr-namespace:Vkm.Radar.Radar.ViewModel"
              xmlns:components="clr-namespace:Vkm.Radar.Radar.RadarComponents"
              xmlns:componentsVM="clr-namespace:Vkm.Radar.Radar.RadarComponents.ViewModel"
+             xmlns:radar="clr-namespace:Vkm.Radar.Radar"
              mc:Ignorable="d"
              d:DesignHeight="500" d:DesignWidth="500">
     <UserControl.DataContext>
         <viewModel:RadarViewModel />
     </UserControl.DataContext>
-    <Grid Width="500" Height="500" SnapsToDevicePixels="True">
+    <Grid Width="{x:Static radar:Constants.RadarDiameter}" Height="{x:Static radar:Constants.RadarDiameter}" SnapsToDevicePixels="True">
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition Width="1" />

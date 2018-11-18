@@ -36,7 +36,7 @@ namespace Vkm.Radar.Radar.RadarComponents.ViewModel
             set { SetProperty(() => Width, value); }
         }
 
-        public int PosTop => Convert.ToInt32(Range * Math.Sin(Azimuth / 180d *Math.PI)) + 250;
-        public int PosLeft => Convert.ToInt32(Range * Math.Cos(Azimuth / 180d * Math.PI)) + 250;
+        public int PosTop => Convert.ToInt32(Range * Math.Sin(Azimuth / 180d *Math.PI) + Constants.RadarCenterY);
+        public int PosLeft => Convert.ToInt32(Range * Math.Cos(Azimuth / 180d * Math.PI) + Constants.RadarCenterX);
     }
 }
