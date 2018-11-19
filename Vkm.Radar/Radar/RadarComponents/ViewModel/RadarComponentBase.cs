@@ -3,7 +3,7 @@ using DevExpress.Mvvm;
 
 namespace Vkm.Radar.Radar.RadarComponents.ViewModel
 {
-    public abstract class RadarComponentBase : ViewModelBase
+    public abstract class RadarComponentBase : ViewModelBase, IRadarComponent
     {
         public RadarComponentBase(double azimuth)
         {

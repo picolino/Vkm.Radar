@@ -56,6 +56,9 @@
                 <DataTemplate DataType="{x:Type componentsVM:TargetViewModel}">
                     <components:Target Tag="{Binding ElementName=PART_Canvas}" />
                 </DataTemplate>
+                <DataTemplate DataType="{x:Type componentsVM:NoiseViewModel}">
+                    <components:Noise Tag="{Binding ElementName=PART_Canvas}" />
+                </DataTemplate>
             </ItemsControl.Resources>
         </ItemsControl>
         <Rectangle Fill="Black" IsHitTestVisible="False" Grid.Column="1" Grid.RowSpan="3" />

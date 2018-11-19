@@ -75,12 +75,17 @@
     <Compile Include="Radar\Radar.xaml.cs">
       <DependentUpon>Radar.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Radar\RadarComponents\DisappearingComponent.cs" />
+    <Compile Include="Radar\RadarComponents\Noise.xaml.cs">
+      <DependentUpon>Noise.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Radar\RadarComponents\ScanLine.xaml.cs">
       <DependentUpon>ScanLine.xaml</DependentUpon>
     </Compile>
     <Compile Include="Radar\RadarComponents\Target.xaml.cs">
       <DependentUpon>Target.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Radar\RadarComponents\ViewModel\IRadarComponent.cs" />
     <Compile Include="Radar\RadarComponents\ViewModel\RadarComponentBase.cs" />
     <Compile Include="Radar\RadarComponents\ViewModel\IDetectableComponent.cs" />
     <Compile Include="Radar\RadarComponents\ViewModel\IPositionalComponent.cs" />
@@ -96,6 +101,10 @@
     <Page Include="Radar\Radar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Radar\RadarComponents\Noise.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Radar\RadarComponents\ScanLine.xaml">
       <SubType>Designer</SubType>

@@ -3,18 +3,18 @@
 namespace Vkm.Radar.Radar.RadarComponents
 {
     /// <summary>
-    /// Interaction logic for Target.xaml
+    /// Interaction logic for ScanLine.xaml
     /// </summary>
-    public partial class Target : DisappearingComponent
+    public partial class Noise : DisappearingComponent
     {
-        public Target()
+        public Noise()
         {
             InitializeComponent();
         }
 
         protected override void OnInitialized(EventArgs e)
         {
-            BaseElement = PART_Target;
+            BaseElement = PART_Line;
             base.OnInitialized(e);
         }
     }

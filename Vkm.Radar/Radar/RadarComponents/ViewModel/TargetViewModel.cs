@@ -6,7 +6,7 @@ namespace Vkm.Radar.Radar.RadarComponents.ViewModel
 {
     public class TargetViewModel : RadarComponentBase, IPositionalComponent, IDetectableComponent
     {
-        public ICommand TargetDetected { private get; set; }
+        public ICommand TargetDetected { get; set; }
 
         public TargetViewModel(double azimuth, double range, double width) : base(azimuth)
         {

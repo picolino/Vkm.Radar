@@ -41,14 +41,23 @@ namespace Vkm.Radar.Radar.ViewModel
             Components.Add(new TargetViewModel(120, 230, 10));
             Components.Add(new TargetViewModel(130, 100, 10));
             Components.Add(new TargetViewModel(20, 90, 10));
-            Components.Add(new TargetViewModel(60, 230, 10));
-            Components.Add(new TargetViewModel(30, 110, 10));
-            Components.Add(new TargetViewModel(230, 240, 10));
-            Components.Add(new TargetViewModel(0, 90, 10));
+            Components.Add(new TargetViewModel(20, 120, 10));
+            Components.Add(new TargetViewModel(230, 248, 10));
             Components.Add(new TargetViewModel(359, 110, 10));
+
+            InitializeNoises();
 
             DetectableComponents = new LinkedList<IDetectableComponent>(Components.OfType<IDetectableComponent>().OrderBy(dc => dc.Azimuth));
             detectableComponent = DetectableComponents.First;
+        }
+
+        private void InitializeNoises()
+        {
+            var baseNoises = new NoiseViewModel(120, 4).Initialize();
+            foreach (var baseNoise in baseNoises)
+            {
+                Components.Add(baseNoise);
+            }
         }
 
         private void OnLoaded()
@@ -77,14 +86,15 @@ namespace Vkm.Radar.Radar.ViewModel
         private void CheckTargetByScanLine()
         {
             //Статья с видами индикаторов рлс при постановке различных видов помех: https://studfiles.net/preview/1430298/page:8/
-            // TODO: Обнаружение цели
-            // TODO: Обнаружение ложных целей
-            // TODO: Обнаружение помехи
 
             if (detectableComponent != null && Math.Abs(ScanLine.Azimuth - detectableComponent.Value.Azimuth) < 0.1)
             {
                 detectableComponent.Value.WhenDetected();
                 detectableComponent = detectableComponent.Next ?? DetectableComponents.First;
+                if (detectableComponent?.Previous?.Value.Azimuth == detectableComponent?.Value?.Azimuth)
+                {
+                    CheckTargetByScanLine();
+                }
             }
         }
     }
