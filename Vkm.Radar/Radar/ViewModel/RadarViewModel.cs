@@ -28,7 +28,7 @@ namespace Vkm.Radar.Radar.ViewModel
             ScanLineTimer = new Timer(10);
             ScanLineTimer.Elapsed += ScanLineMove;
 
-            ScanLine = new ScanLineViewModel();
+            ScanLine = new ScanLineViewModel(0);
             Components = new ObservableCollection<IPositionalComponent>();
 
             InitializeComponents();
@@ -45,12 +45,10 @@ namespace Vkm.Radar.Radar.ViewModel
             Components.Add(new TargetViewModel(30, 110, 10));
             Components.Add(new TargetViewModel(230, 240, 10));
             Components.Add(new TargetViewModel(0, 90, 10));
+            Components.Add(new TargetViewModel(359, 110, 10));
 
             DetectableComponents = new LinkedList<IDetectableComponent>(Components.OfType<IDetectableComponent>().OrderBy(dc => dc.Azimuth));
-
             detectableComponent = DetectableComponents.First;
-
-            UpdateNextDetectableComponent();
         }
 
         private void OnLoaded()
@@ -60,20 +58,19 @@ namespace Vkm.Radar.Radar.ViewModel
 
         private void ScanLineMove(object sender, ElapsedEventArgs e)
         {
-            ScanLineDoStep();
             CheckTargetByScanLine();
+            ScanLineDoStep();
         }
 
         private void ScanLineDoStep()
         {
-            if (ScanLine.LineAzimuth >= 360)
+            if (ScanLine.Azimuth >= 360)
             {
-                ScanLine.LineAzimuth = 0;
-                UpdateNextDetectableComponent();
+                ScanLine.Azimuth = 0;
             }
             else
             {
-                ScanLine.LineAzimuth += 1;
+                ScanLine.Azimuth += 1;
             }
         }
 
@@ -84,16 +81,11 @@ namespace Vkm.Radar.Radar.ViewModel
             // TODO: Обнаружение ложных целей
             // TODO: Обнаружение помехи
 
-            if (detectableComponent != null && Math.Abs(ScanLine.LineAzimuth - detectableComponent.Value.Azimuth) < 0.1)
+            if (detectableComponent != null && Math.Abs(ScanLine.Azimuth - detectableComponent.Value.Azimuth) < 0.1)
             {
                 detectableComponent.Value.WhenDetected();
-                UpdateNextDetectableComponent();
+                detectableComponent = detectableComponent.Next ?? DetectableComponents.First;
             }
-        }
-
-        private void UpdateNextDetectableComponent()
-        {
-            detectableComponent = detectableComponent.Next;
         }
     }
 }

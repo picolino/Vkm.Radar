@@ -13,7 +13,7 @@
           StrokeThickness="2"
           Stroke="GreenYellow">
         <Line.RenderTransform>
-            <RotateTransform Angle="{Binding Path=LineAzimuth}"/>
+            <RotateTransform Angle="{Binding Path=Azimuth}"/>
         </Line.RenderTransform>
     </Line>
 </UserControl>

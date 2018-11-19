@@ -79,6 +79,7 @@
     <Compile Include="Radar\RadarComponents\Target.xaml.cs">
       <DependentUpon>Target.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Radar\RadarComponents\ViewModel\RadarComponentBase.cs" />
     <Compile Include="Radar\RadarComponents\ViewModel\IDetectableComponent.cs" />
     <Compile Include="Radar\RadarComponents\ViewModel\IPositionalComponent.cs" />
     <Compile Include="Radar\RadarComponents\ViewModel\NoiseViewModel.cs" />

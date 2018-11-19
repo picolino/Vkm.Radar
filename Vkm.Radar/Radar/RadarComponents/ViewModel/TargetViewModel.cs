@@ -4,27 +4,14 @@ using DevExpress.Mvvm;
 
 namespace Vkm.Radar.Radar.RadarComponents.ViewModel
 {
-    public class TargetViewModel : ViewModelBase, IPositionalComponent, IDetectableComponent
+    public class TargetViewModel : RadarComponentBase, IPositionalComponent, IDetectableComponent
     {
-        public ICommand TargetDetected;
+        public ICommand TargetDetected { private get; set; }
 
-        [Obsolete("Needs for designer only")]
-        public TargetViewModel()
+        public TargetViewModel(double azimuth, double range, double width) : base(azimuth)
         {
-
-        }
-
-        public TargetViewModel(double azimuth, double range, double width)
-        {
-            Azimuth = azimuth;
             Range = range;
             Width = width;
-        }
-
-        public double Azimuth
-        {
-            get { return GetProperty(() => Azimuth); }
-            set { SetProperty(() => Azimuth, value); }
         }
 
         public double Range
