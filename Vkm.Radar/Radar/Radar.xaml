@@ -7,8 +7,12 @@
              xmlns:components="clr-namespace:Vkm.Radar.Radar.RadarComponents"
              xmlns:componentsVM="clr-namespace:Vkm.Radar.Radar.RadarComponents.ViewModel"
              xmlns:radar="clr-namespace:Vkm.Radar.Radar"
+             xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
              mc:Ignorable="d"
              d:DesignHeight="500" d:DesignWidth="500">
+    <dxmvvm:Interaction.Behaviors>
+        <dxmvvm:EventToCommand Event="Loaded" Command="{Binding Path=LoadedCommand}"/>
+    </dxmvvm:Interaction.Behaviors>
     <UserControl.DataContext>
         <viewModel:RadarViewModel />
     </UserControl.DataContext>

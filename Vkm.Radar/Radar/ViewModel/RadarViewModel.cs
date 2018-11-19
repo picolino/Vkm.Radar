@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Timers;
+using System.Windows.Input;
 using DevExpress.Mvvm;
 using Vkm.Radar.Radar.RadarComponents.ViewModel;
 
@@ -15,10 +16,14 @@ namespace Vkm.Radar.Radar.ViewModel
         public ObservableCollection<IPositionalComponent> Components { get; }
         public ObservableCollection<IDetectableComponent> DetectableComponents { get; set; }
 
+        public ICommand LoadedCommand { get; set; }
+
         private IDetectableComponent nextDetectableComponent;
 
         public RadarViewModel()
         {
+            LoadedCommand = new DelegateCommand(OnLoaded);
+
             Timer = new Timer(10);
             Timer.Elapsed += ScanLineMove;
 
@@ -26,14 +31,23 @@ namespace Vkm.Radar.Radar.ViewModel
             Components = new ObservableCollection<IPositionalComponent>();
 
             InitializeComponents();
+        }
 
+        private void OnLoaded()
+        {
             Timer.Start();
         }
 
         private void InitializeComponents()
         {
             Components.Add(ScanLine);
+
             Components.Add(new TargetViewModel(120, 230, 10));
+            Components.Add(new TargetViewModel(130, 100, 10));
+            Components.Add(new TargetViewModel(20, 90, 10));
+            Components.Add(new TargetViewModel(60, 230, 10));
+            Components.Add(new TargetViewModel(30, 110, 10));
+            Components.Add(new TargetViewModel(230, 240, 10));
 
             DetectableComponents = new ObservableCollection<IDetectableComponent>(Components.OfType<IDetectableComponent>());
 

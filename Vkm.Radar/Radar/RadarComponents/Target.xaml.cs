@@ -1,17 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Windows.Media.Animation;
+using DevExpress.Mvvm;
+using Vkm.Radar.Radar.RadarComponents.ViewModel;
 
 namespace Vkm.Radar.Radar.RadarComponents
 {
@@ -23,6 +16,20 @@ namespace Vkm.Radar.Radar.RadarComponents
         public Target()
         {
             InitializeComponent();
+        }
+
+        private void OnTargetDetected()
+        {
+            Application.Current.Dispatcher.BeginInvoke(new ThreadStart(() =>
+                                                                       {
+                                                                           var detectedAnimation = new DoubleAnimation(1.0, 0.0, new Duration(TimeSpan.FromSeconds(7)));
+                                                                           PART_Target.BeginAnimation(OpacityProperty, detectedAnimation);
+                                                                       }));
+        }
+
+        private void Target_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            ((TargetViewModel)DataContext).TargetDetected = new DelegateCommand(OnTargetDetected);
         }
     }
 }

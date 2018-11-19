@@ -1,11 +1,13 @@
 ﻿using System;
-using System.Diagnostics;
+using System.Windows.Input;
 using DevExpress.Mvvm;
 
 namespace Vkm.Radar.Radar.RadarComponents.ViewModel
 {
     public class TargetViewModel : ViewModelBase, IPositionalComponent, IDetectableComponent
     {
+        public ICommand TargetDetected;
+
         [Obsolete("Needs for designer only")]
         public TargetViewModel()
         {
@@ -37,12 +39,12 @@ namespace Vkm.Radar.Radar.RadarComponents.ViewModel
             set { SetProperty(() => Width, value); }
         }
 
-        public double PosTop => Range * Math.Sin(Azimuth / 180d *Math.PI) + Constants.RadarCenterY;
+        public double PosTop => Range * Math.Sin(Azimuth / 180d * Math.PI) + Constants.RadarCenterY;
         public double PosLeft => Range * Math.Cos(Azimuth / 180d * Math.PI) + Constants.RadarCenterX;
 
         public void WhenDetected()
         {
-            Debug.WriteLine("Target was find!");
+            TargetDetected.Execute(null);
         }
     }
 }
