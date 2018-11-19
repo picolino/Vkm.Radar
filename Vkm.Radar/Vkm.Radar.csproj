@@ -69,6 +69,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Converters\BaseConverter.cs" />
+    <Compile Include="Converters\DoubleInverseConverter.cs" />
     <Compile Include="Radar\Constants.cs" />
     <Compile Include="Radar\Radar.xaml.cs">
       <DependentUpon>Radar.xaml</DependentUpon>

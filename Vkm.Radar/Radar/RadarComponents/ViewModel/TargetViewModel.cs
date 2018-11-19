@@ -23,7 +23,7 @@ namespace Vkm.Radar.Radar.RadarComponents.ViewModel
         public double Width
         {
             get { return GetProperty(() => Width); }
-            set { SetProperty(() => Width, value); }
+            set { SetProperty(() => Width, value / 2); }
         }
 
         public double PosTop => Range * Math.Sin(Azimuth / 180d * Math.PI) + Constants.RadarCenterY;
