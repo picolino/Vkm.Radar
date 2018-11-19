@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Timers;
@@ -11,31 +12,26 @@ namespace Vkm.Radar.Radar.ViewModel
     public class RadarViewModel : ViewModelBase
     {
         private ScanLineViewModel ScanLine { get; }
-        private Timer Timer { get; }
+        private Timer ScanLineTimer { get; }
 
         public ObservableCollection<IPositionalComponent> Components { get; }
-        public ObservableCollection<IDetectableComponent> DetectableComponents { get; set; }
+        private LinkedList<IDetectableComponent> DetectableComponents { get; set; }
 
         public ICommand LoadedCommand { get; set; }
 
-        private IDetectableComponent nextDetectableComponent;
+        private LinkedListNode<IDetectableComponent> detectableComponent;
 
         public RadarViewModel()
         {
             LoadedCommand = new DelegateCommand(OnLoaded);
 
-            Timer = new Timer(10);
-            Timer.Elapsed += ScanLineMove;
+            ScanLineTimer = new Timer(10);
+            ScanLineTimer.Elapsed += ScanLineMove;
 
             ScanLine = new ScanLineViewModel();
             Components = new ObservableCollection<IPositionalComponent>();
 
             InitializeComponents();
-        }
-
-        private void OnLoaded()
-        {
-            Timer.Start();
         }
 
         private void InitializeComponents()
@@ -48,35 +44,24 @@ namespace Vkm.Radar.Radar.ViewModel
             Components.Add(new TargetViewModel(60, 230, 10));
             Components.Add(new TargetViewModel(30, 110, 10));
             Components.Add(new TargetViewModel(230, 240, 10));
+            Components.Add(new TargetViewModel(0, 90, 10));
 
-            DetectableComponents = new ObservableCollection<IDetectableComponent>(Components.OfType<IDetectableComponent>());
+            DetectableComponents = new LinkedList<IDetectableComponent>(Components.OfType<IDetectableComponent>().OrderBy(dc => dc.Azimuth));
+
+            detectableComponent = DetectableComponents.First;
 
             UpdateNextDetectableComponent();
+        }
+
+        private void OnLoaded()
+        {
+            ScanLineTimer.Start();
         }
 
         private void ScanLineMove(object sender, ElapsedEventArgs e)
         {
             ScanLineDoStep();
             CheckTargetByScanLine();
-        }
-
-        private void CheckTargetByScanLine()
-        {
-            //Статья с видами индикаторов рлс при постановке различных видов помех: https://studfiles.net/preview/1430298/page:8/
-            // TODO: Обнаружение цели
-            // TODO: Обнаружение ложных целей
-            // TODO: Обнаружение помехи
-
-            if (nextDetectableComponent != null && Math.Abs(ScanLine.LineAzimuth - nextDetectableComponent.Azimuth) < 0.1)
-            {
-                nextDetectableComponent.WhenDetected();
-                UpdateNextDetectableComponent();
-            }
-        }
-
-        private void UpdateNextDetectableComponent()
-        {
-            nextDetectableComponent = DetectableComponents.OrderBy(dc => dc.Azimuth).FirstOrDefault(dc => dc.Azimuth > ScanLine.LineAzimuth);
         }
 
         private void ScanLineDoStep()
@@ -90,6 +75,25 @@ namespace Vkm.Radar.Radar.ViewModel
             {
                 ScanLine.LineAzimuth += 1;
             }
+        }
+
+        private void CheckTargetByScanLine()
+        {
+            //Статья с видами индикаторов рлс при постановке различных видов помех: https://studfiles.net/preview/1430298/page:8/
+            // TODO: Обнаружение цели
+            // TODO: Обнаружение ложных целей
+            // TODO: Обнаружение помехи
+
+            if (detectableComponent != null && Math.Abs(ScanLine.LineAzimuth - detectableComponent.Value.Azimuth) < 0.1)
+            {
+                detectableComponent.Value.WhenDetected();
+                UpdateNextDetectableComponent();
+            }
+        }
+
+        private void UpdateNextDetectableComponent()
+        {
+            detectableComponent = detectableComponent.Next;
         }
     }
 }

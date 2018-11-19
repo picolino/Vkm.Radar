@@ -1,6 +1,4 @@
-﻿using System;
-using System.Timers;
-using DevExpress.Mvvm;
+﻿using DevExpress.Mvvm;
 
 namespace Vkm.Radar.Radar.RadarComponents.ViewModel
 {
