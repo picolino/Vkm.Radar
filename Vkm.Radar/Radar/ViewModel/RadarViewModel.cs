@@ -53,7 +53,7 @@ namespace Vkm.Radar.Radar.ViewModel
 
         private void InitializeNoises()
         {
-            var baseNoises = new NoiseViewModel(120, 8).GenerateNoisesCollection();
+            var baseNoises = new NoiseViewModel(0, 8).GenerateNoisesCollection();
             foreach (var baseNoise in baseNoises)
             {
                 Components.Add(baseNoise);
