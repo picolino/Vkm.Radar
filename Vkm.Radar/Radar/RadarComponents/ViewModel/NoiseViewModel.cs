@@ -3,11 +3,10 @@ using System.Windows.Input;
 
 namespace Vkm.Radar.Radar.RadarComponents.ViewModel
 {
-    internal class NoiseViewModel : ScanLineViewModel, IDetectableComponent
+    internal class NoiseViewModel : RadarComponentBase, IDetectableComponent, IPositionalComponent
     {
         private NoiseViewModel(double azimuth) : base(azimuth)
         {
-            
         }
 
         public NoiseViewModel(double azimuth, int count) : base(azimuth)
@@ -34,5 +33,8 @@ namespace Vkm.Radar.Radar.RadarComponents.ViewModel
                 yield return new NoiseViewModel(a);
             }
         }
+
+        public double PosTop => Constants.RadarCenter.Y;
+        public double PosLeft => Constants.RadarCenter.X;
     }
 }

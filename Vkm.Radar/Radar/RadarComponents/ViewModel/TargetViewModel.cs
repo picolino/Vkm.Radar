@@ -7,10 +7,11 @@ namespace Vkm.Radar.Radar.RadarComponents.ViewModel
     {
         public ICommand TargetDetected { get; set; }
 
-        public TargetViewModel(double azimuth, double range, double width) : base(azimuth)
+        public TargetViewModel(double azimuth, double range, double length, double thickness) : base(azimuth)
         {
             Range = range;
-            Width = width;
+            Length = length;
+            Thickness = thickness;
         }
 
         public double Range
@@ -19,10 +20,16 @@ namespace Vkm.Radar.Radar.RadarComponents.ViewModel
             set { SetProperty(() => Range, value); }
         }
 
-        public double Width
+        public double Length
         {
-            get { return GetProperty(() => Width); }
-            set { SetProperty(() => Width, value / 2); }
+            get { return GetProperty(() => Length); }
+            set { SetProperty(() => Length, value / 2); }
+        }
+
+        public double Thickness
+        {
+            get { return GetProperty(() => Thickness); }
+            set { SetProperty(() => Thickness, value); }
         }
 
         public double PosTop => Range * Math.Sin(Azimuth / 180d * Math.PI) + Constants.RadarCenterY;

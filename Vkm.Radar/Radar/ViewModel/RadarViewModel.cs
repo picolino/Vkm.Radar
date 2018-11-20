@@ -28,10 +28,12 @@ namespace Vkm.Radar.Radar.ViewModel
             ScanLineTimer = new Timer(10);
             ScanLineTimer.Elapsed += ScanLineMove;
 
-            ScanLine = new ScanLineViewModel(0);
+            ScanLine = new ScanLineViewModel(0, 2);
             Components = new ObservableCollection<IPositionalComponent>();
 
             InitializeComponents();
+
+            ScanLine.RadarComponents = Components.OfType<TargetViewModel>();
         }
 
         private void InitializeComponents()
@@ -45,7 +47,7 @@ namespace Vkm.Radar.Radar.ViewModel
             AddTarget(230, 248, 10);
             AddTarget(359, 110, 10);
 
-            AddNoise(0, 8);
+            AddNoise(60, 10);
 
             DetectableComponents = new LinkedList<IDetectableComponent>(Components.OfType<IDetectableComponent>().OrderBy(dc => dc.Azimuth));
             detectableComponent = DetectableComponents.First;
@@ -53,7 +55,7 @@ namespace Vkm.Radar.Radar.ViewModel
 
         public void AddTarget(double azimuth, double range, double width)
         {
-            Components.Add(new TargetViewModel(azimuth, range, width));
+            Components.Add(new TargetViewModel(azimuth, range, width, ScanLine.PulseDuration));
         }
 
         public void AddNoise(double azimuth, int width)
