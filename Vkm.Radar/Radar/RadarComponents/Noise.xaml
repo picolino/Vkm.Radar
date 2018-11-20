@@ -8,7 +8,7 @@
              xmlns:radarComponents="clr-namespace:Vkm.Radar.Radar.RadarComponents"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
-             d:DataContext="{d:DesignInstance Type=viewModel:NoiseViewModel}">
+             d:DataContext="{d:DesignInstance Type=viewModel:NoiseViewModel}" x:ClassModifier="internal">
     <Line x:Name="PART_Line" X1="{x:Static radar:Constants.RadarCenterX}" Y1="0"
           RenderTransformOrigin="0 0.5"
           StrokeThickness="2"

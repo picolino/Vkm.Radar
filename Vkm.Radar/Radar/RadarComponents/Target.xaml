@@ -8,7 +8,7 @@
              xmlns:radarComponents="clr-namespace:Vkm.Radar.Radar.RadarComponents"
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800"
-             d:DataContext="{d:DesignInstance Type=viewModel:TargetViewModel}">
+             d:DataContext="{d:DesignInstance Type=viewModel:TargetViewModel}" x:ClassModifier="internal">
     <Line x:Name="PART_Target"
           X1="0" Y1="{Binding Width}" Y2="{Binding Width, Converter={converters:DoubleInverseConverter}}"
           RenderTransformOrigin="0.5 0.5"

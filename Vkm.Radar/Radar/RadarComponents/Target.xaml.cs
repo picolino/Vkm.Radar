@@ -5,7 +5,7 @@ namespace Vkm.Radar.Radar.RadarComponents
     /// <summary>
     /// Interaction logic for Target.xaml
     /// </summary>
-    public partial class Target : DisappearingComponent
+    internal partial class Target : DisappearingComponent
     {
         public Target()
         {

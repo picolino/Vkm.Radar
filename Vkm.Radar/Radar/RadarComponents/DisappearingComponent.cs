@@ -8,7 +8,7 @@ using Vkm.Radar.Radar.RadarComponents.ViewModel;
 
 namespace Vkm.Radar.Radar.RadarComponents
 {
-    public class DisappearingComponent : UserControl
+    internal class DisappearingComponent : UserControl
     {
         protected FrameworkElement BaseElement { get; set; }
 

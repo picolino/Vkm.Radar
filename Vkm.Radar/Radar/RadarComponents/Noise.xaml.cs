@@ -5,7 +5,7 @@ namespace Vkm.Radar.Radar.RadarComponents
     /// <summary>
     /// Interaction logic for ScanLine.xaml
     /// </summary>
-    public partial class Noise : DisappearingComponent
+    internal partial class Noise : DisappearingComponent
     {
         public Noise()
         {
