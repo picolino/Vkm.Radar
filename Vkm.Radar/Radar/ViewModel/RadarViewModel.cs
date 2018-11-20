@@ -38,25 +38,30 @@ namespace Vkm.Radar.Radar.ViewModel
         {
             Components.Add(ScanLine);
 
-            Components.Add(new TargetViewModel(120, 230, 10));
-            Components.Add(new TargetViewModel(130, 100, 10));
-            Components.Add(new TargetViewModel(20, 90, 10));
-            Components.Add(new TargetViewModel(20, 120, 10));
-            Components.Add(new TargetViewModel(230, 248, 10));
-            Components.Add(new TargetViewModel(359, 110, 10));
+            AddTarget(120, 230, 10);
+            AddTarget(130, 100, 10);
+            AddTarget(20, 90, 10);
+            AddTarget(20, 120, 10);
+            AddTarget(230, 248, 10);
+            AddTarget(359, 110, 10);
 
-            InitializeNoises();
+            AddNoise(0, 8);
 
             DetectableComponents = new LinkedList<IDetectableComponent>(Components.OfType<IDetectableComponent>().OrderBy(dc => dc.Azimuth));
             detectableComponent = DetectableComponents.First;
         }
 
-        private void InitializeNoises()
+        public void AddTarget(double azimuth, double range, double width)
         {
-            var baseNoises = new NoiseViewModel(0, 8).GenerateNoisesCollection();
-            foreach (var baseNoise in baseNoises)
+            Components.Add(new TargetViewModel(azimuth, range, width));
+        }
+
+        public void AddNoise(double azimuth, int width)
+        {
+            var noises = new NoiseViewModel(azimuth, width).GenerateNoisesCollection();
+            foreach (var noise in noises)
             {
-                Components.Add(baseNoise);
+                Components.Add(noise);
             }
         }
 
