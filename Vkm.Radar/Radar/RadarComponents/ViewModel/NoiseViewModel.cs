@@ -24,7 +24,7 @@ namespace Vkm.Radar.Radar.RadarComponents.ViewModel
             TargetDetected.Execute(null);
         }
 
-        public IEnumerable<NoiseViewModel> Initialize()
+        public IEnumerable<NoiseViewModel> GenerateNoisesCollection()
         {
             var beginAzimuth = Azimuth - Count / 2.0;
             var endAzimuth = Azimuth + Count / 2.0;
