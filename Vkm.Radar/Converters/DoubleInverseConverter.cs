@@ -3,7 +3,7 @@ using System.Globalization;
 
 namespace Vkm.Radar.Converters
 {
-    public class DoubleInverseConverter : BaseConverter<DoubleInverseConverter>
+    internal class DoubleInverseConverter : BaseConverter<DoubleInverseConverter>
     {
         public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {

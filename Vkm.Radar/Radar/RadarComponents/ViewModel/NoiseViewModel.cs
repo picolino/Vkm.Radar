@@ -3,7 +3,7 @@ using System.Windows.Input;
 
 namespace Vkm.Radar.Radar.RadarComponents.ViewModel
 {
-    public class NoiseViewModel : ScanLineViewModel, IDetectableComponent
+    internal class NoiseViewModel : ScanLineViewModel, IDetectableComponent
     {
         private NoiseViewModel(double azimuth) : base(azimuth)
         {

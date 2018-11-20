@@ -1,9 +1,8 @@
-﻿using System;
-using DevExpress.Mvvm;
+﻿using DevExpress.Mvvm;
 
 namespace Vkm.Radar.Radar.RadarComponents.ViewModel
 {
-    public abstract class RadarComponentBase : ViewModelBase, IRadarComponent
+    internal abstract class RadarComponentBase : ViewModelBase, IRadarComponent
     {
         protected RadarComponentBase(double azimuth)
         {

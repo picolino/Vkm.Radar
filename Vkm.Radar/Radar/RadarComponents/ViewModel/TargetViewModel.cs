@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Windows.Input;
-using DevExpress.Mvvm;
 
 namespace Vkm.Radar.Radar.RadarComponents.ViewModel
 {
-    public class TargetViewModel : RadarComponentBase, IPositionalComponent, IDetectableComponent
+    internal class TargetViewModel : RadarComponentBase, IPositionalComponent, IDetectableComponent
     {
         public ICommand TargetDetected { get; set; }
 

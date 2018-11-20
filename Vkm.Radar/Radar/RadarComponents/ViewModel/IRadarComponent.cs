@@ -1,6 +1,6 @@
 ﻿namespace Vkm.Radar.Radar.RadarComponents.ViewModel
 {
-    public interface IRadarComponent
+    internal interface IRadarComponent
     {
         double Azimuth { get; set; }
     }

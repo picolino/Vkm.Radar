@@ -2,7 +2,7 @@
 
 namespace Vkm.Radar.Radar.RadarComponents.ViewModel
 {
-    public interface IDetectableComponent : IRadarComponent
+    internal interface IDetectableComponent : IRadarComponent
     {
         ICommand TargetDetected { get; set; }
         void WhenDetected();

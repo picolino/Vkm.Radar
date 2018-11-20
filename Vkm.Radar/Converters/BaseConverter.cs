@@ -5,7 +5,7 @@ using System.Windows.Markup;
 
 namespace Vkm.Radar.Converters
 {
-    public abstract class BaseConverter<T> : MarkupExtension, IValueConverter where T : class, new()
+    internal abstract class BaseConverter<T> : MarkupExtension, IValueConverter where T : class, new()
     {
         private static T converter;
 
