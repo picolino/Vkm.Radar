@@ -10,7 +10,7 @@ namespace Vkm.Radar.Radar.RadarComponents.ViewModel
             PulseDuration = pulseDuration;
         }
 
-        public IEnumerable<TargetViewModel> RadarComponents { private get; set; }
+        public IEnumerable<TargetViewModel> RadarTargets { private get; set; }
 
         public double PulseDuration
         {
@@ -20,12 +20,12 @@ namespace Vkm.Radar.Radar.RadarComponents.ViewModel
 
         private void OnPulseDurationChanged()
         {
-            if (RadarComponents is null)
+            if (RadarTargets is null)
             {
                 return;
             }
 
-            foreach (var target in RadarComponents)
+            foreach (var target in RadarTargets)
             {
                 target.Thickness = PulseDuration;
             }

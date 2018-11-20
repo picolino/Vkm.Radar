@@ -33,7 +33,7 @@ namespace Vkm.Radar.Radar.ViewModel
 
             InitializeComponents();
 
-            ScanLine.RadarComponents = Components.OfType<TargetViewModel>();
+            ScanLine.RadarTargets = Components.OfType<TargetViewModel>();
         }
 
         private void InitializeComponents()
