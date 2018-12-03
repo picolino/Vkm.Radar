@@ -47,7 +47,7 @@ namespace Vkm.Radar.Radar.ViewModel
             AddTarget(230, 248, 10);
             AddTarget(359, 110, 10);
 
-            AddNoise(60, 10);
+            AddNoise(60, 40);
 
             DetectableComponents = new LinkedList<IDetectableComponent>(Components.OfType<IDetectableComponent>().OrderBy(dc => dc.Azimuth));
             detectableComponent = DetectableComponents.First;
@@ -94,11 +94,12 @@ namespace Vkm.Radar.Radar.ViewModel
         {
             //Статья с видами индикаторов рлс при постановке различных видов помех: https://studfiles.net/preview/1430298/page:8/
 
-            if (detectableComponent != null && Math.Abs(ScanLine.Azimuth - detectableComponent.Value.Azimuth) < 0.1)
+            if (detectableComponent != null && Math.Abs(ScanLine.Azimuth - detectableComponent.Value.Azimuth) < 1)
             {
+                
                 detectableComponent.Value.WhenDetected();
                 detectableComponent = detectableComponent.Next ?? DetectableComponents.First;
-                if (detectableComponent?.Previous?.Value.Azimuth == detectableComponent?.Value?.Azimuth)
+                if (detectableComponent?.Previous?.Value.Azimuth <= detectableComponent?.Value?.Azimuth)
                 {
                     CheckTargetByScanLine();
                 }
