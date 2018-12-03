@@ -40,14 +40,17 @@ namespace Vkm.Radar.Radar.ViewModel
         {
             Components.Add(ScanLine);
 
-            AddTarget(120, 230, 10);
-            AddTarget(130, 100, 10);
-            AddTarget(20, 90, 10);
-            AddTarget(20, 120, 10);
-            AddTarget(230, 248, 10);
-            AddTarget(359, 110, 10);
+            AddTarget(120, 230, 4);
+            AddTarget(130, 100, 4);
+            AddTarget(20, 20, 4);
+            AddTarget(20, 90, 4);
+            AddTarget(20, 120, 4);
+            AddTarget(20, 200, 4);
+            AddTarget(20, 240, 4);
+            AddTarget(230, 248, 4);
+            AddTarget(359, 110, 4);
 
-            AddNoise(60, 40);
+            AddNoise(20, 40);
 
             DetectableComponents = new LinkedList<IDetectableComponent>(Components.OfType<IDetectableComponent>().OrderBy(dc => dc.Azimuth));
             detectableComponent = DetectableComponents.First;

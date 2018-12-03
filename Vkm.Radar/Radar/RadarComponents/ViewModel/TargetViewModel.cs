@@ -23,7 +23,7 @@ namespace Vkm.Radar.Radar.RadarComponents.ViewModel
         public double Length
         {
             get { return GetProperty(() => Length); }
-            set { SetProperty(() => Length, value / 2); }
+            set { SetProperty(() => Length, Range * value / 100); }
         }
 
         public double Thickness
