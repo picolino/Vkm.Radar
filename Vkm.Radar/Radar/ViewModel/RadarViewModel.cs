@@ -53,13 +53,13 @@ namespace Vkm.Radar.Radar.ViewModel
             }
             else
             {
-                var beforeNode = DetectableComponents.Find(DetectableComponents.LastOrDefault(c => c.Azimuth < azimuth));
+                var beforeNode = DetectableComponents.Find(DetectableComponents.LastOrDefault(c => c.Azimuth <= azimuth));
                 if (beforeNode != null)
                 {
                     DetectableComponents.AddAfter(beforeNode, newTarget);
                     return;
                 }
-                var afterNode = DetectableComponents.Find(DetectableComponents.FirstOrDefault(c => c.Azimuth >= azimuth));
+                var afterNode = DetectableComponents.Find(DetectableComponents.FirstOrDefault(c => c.Azimuth > azimuth));
                 if (afterNode != null)
                 {
                     DetectableComponents.AddBefore(afterNode, newTarget);
@@ -80,7 +80,7 @@ namespace Vkm.Radar.Radar.ViewModel
                 }
                 else
                 {
-                    var beforeNode = DetectableComponents.Find(DetectableComponents.LastOrDefault(c => c.Azimuth < noise.Azimuth));
+                    var beforeNode = DetectableComponents.Find(DetectableComponents.LastOrDefault(c => c.Azimuth <= noise.Azimuth));
                     if (beforeNode != null)
                     {
                         DetectableComponents.AddAfter(beforeNode, noise);
