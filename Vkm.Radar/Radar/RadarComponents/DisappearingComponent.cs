@@ -26,14 +26,14 @@ namespace Vkm.Radar.Radar.RadarComponents
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
-            ((IDetectableComponent)DataContext).TargetDetected = new DelegateCommand(OnTargetDetected);
+            ((IDetectableComponent)DataContext).TargetDetected = new DelegateCommand<double>(OnTargetDetected);
         }
 
-        private void OnTargetDetected()
+        private void OnTargetDetected(double opacityMultiplier)
         {
             Application.Current.Dispatcher.BeginInvoke(new ThreadStart(() =>
                                                                        {
-                                                                           var detectedAnimation = new DoubleAnimation(1.0, 0.0, new Duration(TimeSpan.FromSeconds(7)));
+                                                                           var detectedAnimation = new DoubleAnimation(1.0 * opacityMultiplier, 0.0, new Duration(TimeSpan.FromSeconds(7)));
                                                                            BaseElement.BeginAnimation(OpacityProperty, detectedAnimation);
                                                                        }));
         }

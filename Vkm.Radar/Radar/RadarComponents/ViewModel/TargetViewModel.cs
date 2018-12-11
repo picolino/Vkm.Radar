@@ -35,9 +35,9 @@ namespace Vkm.Radar.Radar.RadarComponents.ViewModel
         public double PosTop => Range * Math.Sin(Azimuth / 180d * Math.PI) + Constants.RadarCenterY;
         public double PosLeft => Range * Math.Cos(Azimuth / 180d * Math.PI) + Constants.RadarCenterX;
 
-        public void WhenDetected()
+        public void WhenDetected(double opacityMultiplier)
         {
-            TargetDetected.Execute(null);
+            TargetDetected.Execute(opacityMultiplier);
         }
     }
 }

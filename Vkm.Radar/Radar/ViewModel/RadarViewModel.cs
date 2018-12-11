@@ -34,6 +34,8 @@ namespace Vkm.Radar.Radar.ViewModel
             InitializeComponents();
 
             ScanLine.RadarTargets = Components.OfType<TargetViewModel>();
+
+            OpacityMultiplier = 1;
         }
 
         private void InitializeComponents()
@@ -134,7 +136,7 @@ namespace Vkm.Radar.Radar.ViewModel
             if (detectableComponent != null && Math.Abs(ScanLine.Azimuth - detectableComponent.Value.Azimuth) < 1)
             {
                 
-                detectableComponent.Value.WhenDetected();
+                detectableComponent.Value.WhenDetected(OpacityMultiplier);
                 detectableComponent = detectableComponent.Next ?? DetectableComponents.First;
                 if (detectableComponent?.Previous?.Value.Azimuth <= detectableComponent?.Value?.Azimuth)
                 {
@@ -154,5 +156,7 @@ namespace Vkm.Radar.Radar.ViewModel
             get => ScanLineTimer.Interval;
             set => ScanLineTimer.Interval = value;
         }
+
+        public double OpacityMultiplier { get; set; }
     }
 }

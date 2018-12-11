@@ -18,9 +18,9 @@ namespace Vkm.Radar.Radar.RadarComponents.ViewModel
 
         public ICommand TargetDetected { get; set; }
 
-        public void WhenDetected()
+        public void WhenDetected(double opacityMultiplier)
         {
-            TargetDetected.Execute(null);
+            TargetDetected.Execute(opacityMultiplier);
         }
 
         public IEnumerable<NoiseViewModel> GenerateNoisesCollection()
