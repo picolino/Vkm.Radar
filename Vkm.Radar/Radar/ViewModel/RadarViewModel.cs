@@ -67,6 +67,11 @@ namespace Vkm.Radar.Radar.ViewModel
                     DetectableComponents.AddBefore(afterNode, newTarget);
                 }
             }
+
+            if (detectableComponent != null && detectableComponent.Value.Azimuth > azimuth)
+            {
+                detectableComponent = DetectableComponents.Find(newTarget);
+            }
         }
 
         public void AddNoise(double azimuth, int width)
@@ -93,6 +98,11 @@ namespace Vkm.Radar.Radar.ViewModel
                     {
                         DetectableComponents.AddBefore(afterNode, noise);
                     }
+                }
+
+                if (detectableComponent != null && detectableComponent.Value.Azimuth > azimuth)
+                {
+                    detectableComponent = DetectableComponents.Find(noise);
                 }
             }
         }
