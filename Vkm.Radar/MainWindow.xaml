@@ -40,7 +40,18 @@
             <TextBlock Grid.Row="1" Grid.Column="1" Text="Длительность импульсов:"/>
             <Slider Grid.Row="1" Grid.Column="3" Value="{Binding Path=RadarViewModel.ScanLinePulseDuration}" Minimum="0" Maximum="10"/>
 
-            <Button Grid.Row="5" Grid.Column="3" Content="Сброс" HorizontalAlignment="Right" Padding="10 5 10 5" Command="{Binding Path=ResetCommand}"/>
+            <Grid Grid.Row="5" Grid.Column="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="5"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="10"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="1" Content="Наборы" HorizontalAlignment="Right" Padding="10 5 10 5" Command="{Binding Path=PresetsCommand}" IsEnabled="False"/>
+                <Button Grid.Column="3" Content="Сброс" HorizontalAlignment="Right" Padding="10 5 10 5" Command="{Binding Path=ResetCommand}"/>
+            </Grid>
         </Grid>
     </Grid>
 </Window>
