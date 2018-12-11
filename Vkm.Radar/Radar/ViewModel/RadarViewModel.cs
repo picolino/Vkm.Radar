@@ -28,7 +28,7 @@ namespace Vkm.Radar.Radar.ViewModel
             ScanLineTimer = new Timer(scanLineMoveInterval);
             ScanLineTimer.Elapsed += ScanLineMove;
 
-            ScanLine = new ScanLineViewModel(0, 2);
+            ScanLine = new ScanLineViewModel(0, 2, 1);
             Components = new ObservableCollection<IPositionalComponent>();
 
             InitializeComponents();
@@ -149,6 +149,12 @@ namespace Vkm.Radar.Radar.ViewModel
         {
             get => ScanLine.PulseDuration;
             set => ScanLine.PulseDuration = value;
+        }
+
+        public double ScanLinePulseLength
+        {
+            get => ScanLine.PulseLength;
+            set => ScanLine.PulseLength = value;
         }
 
         public double ScanLineTimerInterval

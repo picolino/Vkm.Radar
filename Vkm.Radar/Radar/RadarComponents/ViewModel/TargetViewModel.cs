@@ -10,7 +10,7 @@ namespace Vkm.Radar.Radar.RadarComponents.ViewModel
         public TargetViewModel(double azimuth, double range, double length, double thickness) : base(azimuth)
         {
             Range = range;
-            Length = length;
+            Length = InitialLength = length;
             Thickness = thickness;
         }
 
@@ -20,6 +20,7 @@ namespace Vkm.Radar.Radar.RadarComponents.ViewModel
             set { SetProperty(() => Range, value); }
         }
 
+        public double InitialLength { get; }
         public double Length
         {
             get { return GetProperty(() => Length); }
