@@ -148,5 +148,11 @@ namespace Vkm.Radar.Radar.ViewModel
             get => ScanLine.PulseDuration;
             set => ScanLine.PulseDuration = value;
         }
+
+        public double ScanLineTimerInterval
+        {
+            get => ScanLineTimer.Interval;
+            set => ScanLineTimer.Interval = value;
+        }
     }
 }
