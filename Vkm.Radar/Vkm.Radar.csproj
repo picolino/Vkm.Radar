@@ -61,6 +61,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Dialog\PresetSelectorDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -71,6 +75,9 @@
     </Compile>
     <Compile Include="Converters\BaseConverter.cs" />
     <Compile Include="Converters\DoubleInverseConverter.cs" />
+    <Compile Include="Dialog\PresetSelectorDialog.xaml.cs">
+      <DependentUpon>PresetSelectorDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Radar\Constants.cs" />
     <Compile Include="Radar\Radar.xaml.cs">
       <DependentUpon>Radar.xaml</DependentUpon>

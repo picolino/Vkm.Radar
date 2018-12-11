@@ -44,9 +44,9 @@ namespace Vkm.Radar.Radar.ViewModel
             DetectableComponents = new LinkedList<IDetectableComponent>();
         }
 
-        public void AddTarget(double azimuth, double range, double width)
+        public void AddTarget(double azimuth, double range, double width, double opacityMultiplier = 1)
         {
-            var newTarget = new TargetViewModel(azimuth, range, width, ScanLine.PulseDuration);
+            var newTarget = new TargetViewModel(azimuth, range, width, ScanLine.PulseDuration, opacityMultiplier);
             Components.Add(newTarget);
             if (DetectableComponents?.Count == 0)
             {
@@ -59,7 +59,6 @@ namespace Vkm.Radar.Radar.ViewModel
                 if (beforeNode != null)
                 {
                     DetectableComponents.AddAfter(beforeNode, newTarget);
-                    return;
                 }
                 var afterNode = DetectableComponents.Find(DetectableComponents.FirstOrDefault(c => c.Azimuth > azimuth));
                 if (afterNode != null)
@@ -91,7 +90,6 @@ namespace Vkm.Radar.Radar.ViewModel
                     if (beforeNode != null)
                     {
                         DetectableComponents.AddAfter(beforeNode, noise);
-                        return;
                     }
                     var afterNode = DetectableComponents.Find(DetectableComponents.FirstOrDefault(c => c.Azimuth > noise.Azimuth));
                     if (afterNode != null)
@@ -100,7 +98,7 @@ namespace Vkm.Radar.Radar.ViewModel
                     }
                 }
 
-                if (detectableComponent != null && detectableComponent.Value.Azimuth > azimuth)
+                if (detectableComponent != null && detectableComponent.Value.Azimuth > noise.Azimuth)
                 {
                     detectableComponent = DetectableComponents.Find(noise);
                 }
@@ -109,11 +107,11 @@ namespace Vkm.Radar.Radar.ViewModel
 
         public void ClearAllComponents()
         {
-            DetectableComponents.Clear();
-            for (var i = 1; i < Components.Count; i++)
+            for (var i = Components.Count - 1; i > 0; i--)
             {
                 Components.RemoveAt(i);
             }
+            DetectableComponents.Clear();
         }
 
         private void OnLoaded()

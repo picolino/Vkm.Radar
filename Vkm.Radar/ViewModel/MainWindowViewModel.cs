@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Windows;
 using System.Windows.Input;
 using DevExpress.Mvvm;
+using Vkm.Radar.Dialog;
 using Vkm.Radar.Radar;
 using Vkm.Radar.Radar.ViewModel;
 
@@ -28,7 +30,34 @@ namespace Vkm.Radar.ViewModel
 
         private void OnPresets()
         {
-            throw new NotImplementedException();
+            var dialog = new PresetSelectorDialog
+                         {
+                             Owner = Application.Current.MainWindow
+                         };
+
+            dialog.ShowDialog();
+
+            OnReset();
+
+            switch (dialog.Result)
+            {
+                case 0:
+                    RadarViewModel.AddNoise(45, 20);
+                    RadarViewModel.AddTarget(45, 120, 4, 0.3);
+                    break;
+                case 1:
+                    RadarViewModel.AddNoise(45, 10);
+                    RadarViewModel.AddTarget(45, 120, 4, 0.7);
+                    break;
+                case 2:
+                    RadarViewModel.AddTarget(45, 104, 4);
+                    RadarViewModel.AddTarget(45, 100, 4);
+                    break;
+                case 3:
+                    RadarViewModel.AddTarget(45, 100, 4);
+                    RadarViewModel.AddTarget(50, 100, 4);
+                    break;
+            }
         }
 
         private void OnCreateTarget()
@@ -40,13 +69,6 @@ namespace Vkm.Radar.ViewModel
         private void InitializeRadar()
         {
             var radar = new RadarViewModel(10);
-
-            radar.AddTarget(120, 104, 4);
-            radar.AddTarget(120, 100, 4);
-
-            radar.AddTarget(100, 100, 4);
-            radar.AddTarget(105, 100, 4);
-
             RadarViewModel = radar;
         }
 
