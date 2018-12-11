@@ -21,11 +21,11 @@ namespace Vkm.Radar.Radar.ViewModel
 
         private LinkedListNode<IDetectableComponent> detectableComponent;
 
-        public RadarViewModel()
+        public RadarViewModel(double scanLineMoveInterval)
         {
             LoadedCommand = new DelegateCommand(OnLoaded);
 
-            ScanLineTimer = new Timer(10);
+            ScanLineTimer = new Timer(scanLineMoveInterval);
             ScanLineTimer.Elapsed += ScanLineMove;
 
             ScanLine = new ScanLineViewModel(0, 2);
@@ -39,26 +39,32 @@ namespace Vkm.Radar.Radar.ViewModel
         private void InitializeComponents()
         {
             Components.Add(ScanLine);
-
-            AddTarget(120, 230, 4);
-            AddTarget(130, 100, 4);
-            AddTarget(20, 20, 4);
-            AddTarget(20, 90, 4);
-            AddTarget(20, 120, 4);
-            AddTarget(20, 200, 4);
-            AddTarget(20, 240, 4);
-            AddTarget(230, 248, 4);
-            AddTarget(359, 110, 4);
-
-            AddNoise(20, 40);
-
-            DetectableComponents = new LinkedList<IDetectableComponent>(Components.OfType<IDetectableComponent>().OrderBy(dc => dc.Azimuth));
-            detectableComponent = DetectableComponents.First;
+            DetectableComponents = new LinkedList<IDetectableComponent>();
         }
 
         public void AddTarget(double azimuth, double range, double width)
         {
-            Components.Add(new TargetViewModel(azimuth, range, width, ScanLine.PulseDuration));
+            var newTarget = new TargetViewModel(azimuth, range, width, ScanLine.PulseDuration);
+            Components.Add(newTarget);
+            if (DetectableComponents?.Count == 0)
+            {
+                DetectableComponents.AddFirst(newTarget);
+                detectableComponent = DetectableComponents.First;
+            }
+            else
+            {
+                var beforeNode = DetectableComponents.Find(DetectableComponents.LastOrDefault(c => c.Azimuth < azimuth));
+                if (beforeNode != null)
+                {
+                    DetectableComponents.AddAfter(beforeNode, newTarget);
+                    return;
+                }
+                var afterNode = DetectableComponents.Find(DetectableComponents.FirstOrDefault(c => c.Azimuth >= azimuth));
+                if (afterNode != null)
+                {
+                    DetectableComponents.AddBefore(afterNode, newTarget);
+                }
+            }
         }
 
         public void AddNoise(double azimuth, int width)
@@ -67,6 +73,25 @@ namespace Vkm.Radar.Radar.ViewModel
             foreach (var noise in noises)
             {
                 Components.Add(noise);
+                if (DetectableComponents?.Count == 0)
+                {
+                    DetectableComponents.AddFirst(noise);
+                    detectableComponent = DetectableComponents.First;
+                }
+                else
+                {
+                    var beforeNode = DetectableComponents.Find(DetectableComponents.LastOrDefault(c => c.Azimuth < noise.Azimuth));
+                    if (beforeNode != null)
+                    {
+                        DetectableComponents.AddAfter(beforeNode, noise);
+                        return;
+                    }
+                    var afterNode = DetectableComponents.Find(DetectableComponents.FirstOrDefault(c => c.Azimuth > noise.Azimuth));
+                    if (afterNode != null)
+                    {
+                        DetectableComponents.AddBefore(afterNode, noise);
+                    }
+                }
             }
         }
 
