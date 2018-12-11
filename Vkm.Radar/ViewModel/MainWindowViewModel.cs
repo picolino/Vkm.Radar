@@ -1,5 +1,7 @@
-﻿using System.Windows.Input;
+﻿using System;
+using System.Windows.Input;
 using DevExpress.Mvvm;
+using Vkm.Radar.Radar;
 using Vkm.Radar.Radar.ViewModel;
 
 namespace Vkm.Radar.ViewModel
@@ -8,23 +10,31 @@ namespace Vkm.Radar.ViewModel
     {
         public ICommand ResetCommand { get; }
         public ICommand PresetsCommand { get; }
+        public ICommand CreateTargetCommand { get; }
 
         public MainWindowViewModel()
         {
             ResetCommand = new DelegateCommand(OnReset);
             PresetsCommand = new DelegateCommand(OnPresets);
+            CreateTargetCommand = new DelegateCommand(OnCreateTarget);
 
             InitializeRadar();
-        }
-
-        private void OnPresets()
-        {
-            throw new System.NotImplementedException();
         }
 
         private void OnReset()
         {
             RadarViewModel.ClearAllComponents();
+        }
+
+        private void OnPresets()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void OnCreateTarget()
+        {
+            var random = new Random();
+            RadarViewModel.AddTarget(random.Next(0,360), random.Next(10, (int) Constants.RadarRadius), random.Next(3, 10));
         }
 
         private void InitializeRadar()

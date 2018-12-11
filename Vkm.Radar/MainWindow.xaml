@@ -37,8 +37,10 @@
                 <ColumnDefinition Width="10"/>
             </Grid.ColumnDefinitions>
             
-            <TextBlock Grid.Row="1" Grid.Column="1" Text="Длительность импульсов:"/>
-            <Slider Grid.Row="1" Grid.Column="3" Value="{Binding Path=RadarViewModel.ScanLinePulseDuration}" Minimum="0" Maximum="10"/>
+            <Button Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Content="Добавить цель" Command="{Binding Path=CreateTargetCommand}"/>
+
+            <TextBlock Grid.Row="3" Grid.Column="1" Text="Длительность импульсов:"/>
+            <Slider Grid.Row="3" Grid.Column="3" Value="{Binding Path=RadarViewModel.ScanLinePulseDuration}" Minimum="0" Maximum="10"/>
 
             <Grid Grid.Row="5" Grid.Column="3">
                 <Grid.ColumnDefinitions>
