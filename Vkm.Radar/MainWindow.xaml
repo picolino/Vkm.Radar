@@ -24,6 +24,10 @@
                 <RowDefinition Height="10"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="5"/>
+                <RowDefinition />
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="10"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="10"/>
@@ -32,8 +36,11 @@
                 <ColumnDefinition/>
                 <ColumnDefinition Width="10"/>
             </Grid.ColumnDefinitions>
-            <TextBox Grid.Row="1" Grid.Column="1" Text="Длительность импульсов:"/>
+            
+            <TextBlock Grid.Row="1" Grid.Column="1" Text="Длительность импульсов:"/>
             <Slider Grid.Row="1" Grid.Column="3" Value="{Binding Path=RadarViewModel.ScanLinePulseDuration}" Minimum="0" Maximum="10"/>
+
+            <Button Grid.Row="5" Grid.Column="3" Content="Сброс" HorizontalAlignment="Right" Padding="10 5 10 5" Command="{Binding Path=ResetCommand}"/>
         </Grid>
     </Grid>
 </Window>

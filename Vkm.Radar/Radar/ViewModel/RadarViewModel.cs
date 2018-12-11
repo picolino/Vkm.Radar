@@ -95,6 +95,15 @@ namespace Vkm.Radar.Radar.ViewModel
             }
         }
 
+        public void ClearAllComponents()
+        {
+            DetectableComponents.Clear();
+            for (var i = 1; i < Components.Count; i++)
+            {
+                Components.RemoveAt(i);
+            }
+        }
+
         private void OnLoaded()
         {
             ScanLineTimer.Start();

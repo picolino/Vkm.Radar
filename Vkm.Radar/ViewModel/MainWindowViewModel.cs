@@ -1,11 +1,26 @@
-﻿using DevExpress.Mvvm;
+﻿using System.Windows.Input;
+using DevExpress.Mvvm;
 using Vkm.Radar.Radar.ViewModel;
 
 namespace Vkm.Radar.ViewModel
 {
     public class MainWindowViewModel : ViewModelBase
     {
+        public ICommand ResetCommand { get; }
+
         public MainWindowViewModel()
+        {
+            ResetCommand = new DelegateCommand(OnReset);
+
+            InitializeRadar();
+        }
+
+        private void OnReset()
+        {
+            RadarViewModel.ClearAllComponents();
+        }
+
+        private void InitializeRadar()
         {
             var radar = new RadarViewModel(10);
 
