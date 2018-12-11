@@ -19,5 +19,21 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <radar:Radar Grid.Row="0" Margin="10" DataContext="{Binding RadarViewModel}"/>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="5"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="10"/>
+            </Grid.ColumnDefinitions>
+            <TextBox Grid.Row="1" Grid.Column="1" Text="Длительность импульсов:"/>
+            <Slider Grid.Row="1" Grid.Column="3" Value="{Binding Path=RadarViewModel.ScanLinePulseDuration}" Minimum="0" Maximum="10"/>
+        </Grid>
     </Grid>
 </Window>

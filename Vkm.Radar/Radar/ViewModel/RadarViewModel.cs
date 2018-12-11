@@ -133,5 +133,11 @@ namespace Vkm.Radar.Radar.ViewModel
                 }
             }
         }
+
+        public double ScanLinePulseDuration
+        {
+            get => ScanLine.PulseDuration;
+            set => ScanLine.PulseDuration = value;
+        }
     }
 }
