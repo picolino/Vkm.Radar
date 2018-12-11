@@ -55,7 +55,7 @@ namespace Vkm.Radar.Radar.ViewModel
             }
             else
             {
-                var beforeNode = DetectableComponents.Find(DetectableComponents.LastOrDefault(c => c.Azimuth <= azimuth));
+                var beforeNode = DetectableComponents.FindLast(DetectableComponents.LastOrDefault(c => c.Azimuth <= azimuth));
                 if (beforeNode != null)
                 {
                     DetectableComponents.AddAfter(beforeNode, newTarget);
@@ -64,12 +64,11 @@ namespace Vkm.Radar.Radar.ViewModel
                 if (afterNode != null)
                 {
                     DetectableComponents.AddBefore(afterNode, newTarget);
+                    if (detectableComponent == afterNode)
+                    {
+                        detectableComponent = DetectableComponents.Find(newTarget);
+                    }
                 }
-            }
-
-            if (detectableComponent != null && detectableComponent.Value.Azimuth > azimuth)
-            {
-                detectableComponent = DetectableComponents.Find(newTarget);
             }
         }
 
@@ -86,7 +85,7 @@ namespace Vkm.Radar.Radar.ViewModel
                 }
                 else
                 {
-                    var beforeNode = DetectableComponents.Find(DetectableComponents.LastOrDefault(c => c.Azimuth <= noise.Azimuth));
+                    var beforeNode = DetectableComponents.FindLast(DetectableComponents.LastOrDefault(c => c.Azimuth <= noise.Azimuth));
                     if (beforeNode != null)
                     {
                         DetectableComponents.AddAfter(beforeNode, noise);
@@ -95,12 +94,11 @@ namespace Vkm.Radar.Radar.ViewModel
                     if (afterNode != null)
                     {
                         DetectableComponents.AddBefore(afterNode, noise);
+                        if (detectableComponent == afterNode)
+                        {
+                            detectableComponent = DetectableComponents.Find(noise);
+                        }
                     }
-                }
-
-                if (detectableComponent != null && detectableComponent.Value.Azimuth > noise.Azimuth)
-                {
-                    detectableComponent = DetectableComponents.Find(noise);
                 }
             }
         }

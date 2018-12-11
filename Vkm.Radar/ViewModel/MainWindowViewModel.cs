@@ -68,8 +68,7 @@ namespace Vkm.Radar.ViewModel
 
         private void InitializeRadar()
         {
-            var radar = new RadarViewModel(10);
-            RadarViewModel = radar;
+            RadarViewModel = new RadarViewModel(10);
         }
 
         public RadarViewModel RadarViewModel
