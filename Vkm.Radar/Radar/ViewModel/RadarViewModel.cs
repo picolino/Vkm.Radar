@@ -21,7 +21,7 @@ namespace Vkm.Radar.Radar.ViewModel
 
         private LinkedListNode<IDetectableComponent> detectableComponent;
 
-        public RadarViewModel(double scanLineMoveInterval)
+        public RadarViewModel(double scanLineMoveInterval, bool useStructuralComponents)
         {
             LoadedCommand = new DelegateCommand(OnLoaded);
 
@@ -31,15 +31,16 @@ namespace Vkm.Radar.Radar.ViewModel
             ScanLine = new ScanLineViewModel(0, 2, 1);
             Components = new ObservableCollection<IPositionalComponent>();
 
-            InitializeComponents();
+            InitializeComponents(useStructuralComponents);
 
             ScanLine.RadarTargets = Components.OfType<TargetViewModel>();
 
             OpacityMultiplier = 1;
         }
 
-        private void InitializeComponents()
+        private void InitializeComponents(bool useStructuralComponents)
         {
+            UseDefaultStructuralComponents = useStructuralComponents;
             Components.Add(ScanLine);
             DetectableComponents = new LinkedList<IDetectableComponent>();
         }
@@ -53,15 +54,20 @@ namespace Vkm.Radar.Radar.ViewModel
         public void AddNoise(double azimuth, int width, double opacityMultiplier = 1)
         {
             var noises = new NoiseViewModel(azimuth, width, opacityMultiplier).GenerateNoisesCollection();
-            foreach (var noise in noises)
-            {
-                AddComponent(noise);
-            }
+            AddComponents(noises);
         }
 
         private void AddDefaultStructuralComponents()
         {
             throw new NotImplementedException();
+        }
+
+        private void AddComponents<T>(IEnumerable<T> components) where T : IPositionalComponent, IDetectableComponent
+        {
+            foreach (var component in components)
+            {
+                AddComponent(component);
+            }
         }
 
         private void AddComponent<T>(T component) where T : IPositionalComponent, IDetectableComponent
