@@ -47,29 +47,7 @@ namespace Vkm.Radar.Radar.ViewModel
         public void AddTarget(double azimuth, double range, double width, double opacityMultiplier = 1)
         {
             var newTarget = new TargetViewModel(azimuth, range, width, ScanLine.PulseDuration, opacityMultiplier);
-            Components.Add(newTarget);
-            if (DetectableComponents?.Count == 0)
-            {
-                DetectableComponents.AddFirst(newTarget);
-                detectableComponent = DetectableComponents.First;
-            }
-            else
-            {
-                var beforeNode = DetectableComponents.FindLast(DetectableComponents.LastOrDefault(c => c.Azimuth <= azimuth));
-                if (beforeNode != null)
-                {
-                    DetectableComponents.AddAfter(beforeNode, newTarget);
-                }
-                var afterNode = DetectableComponents.Find(DetectableComponents.FirstOrDefault(c => c.Azimuth > azimuth));
-                if (afterNode != null)
-                {
-                    DetectableComponents.AddBefore(afterNode, newTarget);
-                    if (detectableComponent == afterNode)
-                    {
-                        detectableComponent = DetectableComponents.Find(newTarget);
-                    }
-                }
-            }
+            AddComponent(newTarget);
         }
 
         public void AddNoise(double azimuth, int width)
@@ -77,27 +55,32 @@ namespace Vkm.Radar.Radar.ViewModel
             var noises = new NoiseViewModel(azimuth, width).GenerateNoisesCollection();
             foreach (var noise in noises)
             {
-                Components.Add(noise);
-                if (DetectableComponents?.Count == 0)
+                AddComponent(noise);
+            }
+        }
+
+        private void AddComponent<T>(T component) where T : IPositionalComponent, IDetectableComponent
+        {
+            Components.Add(component);
+            if (DetectableComponents?.Count == 0)
+            {
+                DetectableComponents.AddFirst(component);
+                detectableComponent = DetectableComponents.First;
+            }
+            else
+            {
+                var beforeNode = DetectableComponents.FindLast(DetectableComponents.LastOrDefault(c => c.Azimuth <= component.Azimuth));
+                if (beforeNode != null)
                 {
-                    DetectableComponents.AddFirst(noise);
-                    detectableComponent = DetectableComponents.First;
+                    DetectableComponents.AddAfter(beforeNode, component);
                 }
-                else
+                var afterNode = DetectableComponents.Find(DetectableComponents.FirstOrDefault(c => c.Azimuth > component.Azimuth));
+                if (afterNode != null)
                 {
-                    var beforeNode = DetectableComponents.FindLast(DetectableComponents.LastOrDefault(c => c.Azimuth <= noise.Azimuth));
-                    if (beforeNode != null)
+                    DetectableComponents.AddBefore(afterNode, component);
+                    if (detectableComponent == afterNode)
                     {
-                        DetectableComponents.AddAfter(beforeNode, noise);
-                    }
-                    var afterNode = DetectableComponents.Find(DetectableComponents.FirstOrDefault(c => c.Azimuth > noise.Azimuth));
-                    if (afterNode != null)
-                    {
-                        DetectableComponents.AddBefore(afterNode, noise);
-                        if (detectableComponent == afterNode)
-                        {
-                            detectableComponent = DetectableComponents.Find(noise);
-                        }
+                        detectableComponent = DetectableComponents.Find(component);
                     }
                 }
             }
