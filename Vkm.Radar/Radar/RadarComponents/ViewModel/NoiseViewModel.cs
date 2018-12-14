@@ -16,13 +16,6 @@ namespace Vkm.Radar.Radar.RadarComponents.ViewModel
 
         public int Count { get; }
 
-        public ICommand TargetDetected { get; set; }
-
-        public void WhenDetected(double opacityMultiplier)
-        {
-            TargetDetected.Execute(opacityMultiplier * OpacityMultiplier);
-        }
-
         public IEnumerable<NoiseViewModel> GenerateNoisesCollection()
         {
             var beginAzimuth = Azimuth - Count / 2.0;

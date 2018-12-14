@@ -1,21 +1,20 @@
-﻿<radarComponents:DisappearingComponent x:Class="Vkm.Radar.Radar.RadarComponents.Noise"
+﻿<UserControl x:Class="Vkm.Radar.Radar.RadarComponents.Noise"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:viewModel="clr-namespace:Vkm.Radar.Radar.RadarComponents.ViewModel"
              xmlns:radar="clr-namespace:Vkm.Radar.Radar"
-             xmlns:radarComponents="clr-namespace:Vkm.Radar.Radar.RadarComponents"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              d:DataContext="{d:DesignInstance Type=viewModel:NoiseViewModel}" x:ClassModifier="internal">
-    <Line x:Name="PART_Line" X1="{x:Static radar:Constants.RadarCenterX}" Y1="0"
+    <Line X1="{x:Static radar:Constants.RadarCenterX}" Y1="0"
           RenderTransformOrigin="0 0.5"
           StrokeThickness="2"
           Stroke="GreenYellow"
-          Opacity="0">
+          Opacity="{Binding Path=OpacityMultiplier}">
         <Line.RenderTransform>
             <RotateTransform Angle="{Binding Path=Azimuth}"/>
         </Line.RenderTransform>
     </Line>
-</radarComponents:DisappearingComponent>
+</UserControl>

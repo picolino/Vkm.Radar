@@ -37,7 +37,15 @@
                 <ItemsPanelTemplate>
                     <Canvas x:Name="PART_Canvas"
                             ClipToBounds="True"
-                            SnapsToDevicePixels="True"/>
+                            SnapsToDevicePixels="True">
+                        <Canvas.OpacityMask>
+                            <ImageBrush ImageSource="Images/conical-gradient.png">
+                                <ImageBrush.RelativeTransform>
+                                    <RotateTransform CenterX="0.5" CenterY="0.5" Angle="{Binding Path=ScanLineAzimuth}"/>
+                                </ImageBrush.RelativeTransform>
+                            </ImageBrush>
+                        </Canvas.OpacityMask>
+                    </Canvas>
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemContainerStyle>

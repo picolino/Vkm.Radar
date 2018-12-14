@@ -82,7 +82,6 @@
     <Compile Include="Radar\Radar.xaml.cs">
       <DependentUpon>Radar.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Radar\RadarComponents\DisappearingComponent.cs" />
     <Compile Include="Radar\RadarComponents\Noise.xaml.cs">
       <DependentUpon>Noise.xaml</DependentUpon>
     </Compile>
@@ -159,6 +158,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Radar\Images\conical-gradient.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -11,7 +11,7 @@ namespace Vkm.Radar.Radar.ViewModel
 {
     public class RadarViewModel : ViewModelBase
     {
-        private ScanLineViewModel ScanLine { get; }
+        internal ScanLineViewModel ScanLine { get; }
         private Timer ScanLineTimer { get; }
 
         public ObservableCollection<IPositionalComponent> Components { get; }
@@ -145,7 +145,6 @@ namespace Vkm.Radar.Radar.ViewModel
 
         private void ScanLineMove(object sender, ElapsedEventArgs e)
         {
-            CheckTargetByScanLine();
             ScanLineDoStep();
         }
 
@@ -159,22 +158,8 @@ namespace Vkm.Radar.Radar.ViewModel
             {
                 ScanLine.Azimuth += 1;
             }
-        }
 
-        private void CheckTargetByScanLine()
-        {
-            //Статья с видами индикаторов рлс при постановке различных видов помех: https://studfiles.net/preview/1430298/page:8/
-
-            if (detectableComponent != null && Math.Abs(ScanLine.Azimuth - detectableComponent.Value.Azimuth) < 1)
-            {
-                
-                detectableComponent.Value.WhenDetected(OpacityMultiplier);
-                detectableComponent = detectableComponent.Next ?? DetectableComponents.First;
-                if (detectableComponent?.Previous?.Value.Azimuth <= detectableComponent?.Value?.Azimuth)
-                {
-                    CheckTargetByScanLine();
-                }
-            }
+            ScanLineAzimuth = ScanLine.Azimuth;
         }
 
         public double ScanLinePulseDuration
@@ -193,6 +178,12 @@ namespace Vkm.Radar.Radar.ViewModel
         {
             get => ScanLineTimer.Interval;
             set => ScanLineTimer.Interval = value;
+        }
+
+        public double ScanLineAzimuth
+        {
+            get { return GetProperty(() => ScanLineAzimuth); }
+            set { SetProperty(() => ScanLineAzimuth, value); }
         }
 
         public double OpacityMultiplier { get; set; }
