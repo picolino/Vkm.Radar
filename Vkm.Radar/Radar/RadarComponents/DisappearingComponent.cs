@@ -8,7 +8,7 @@ using Vkm.Radar.Radar.RadarComponents.ViewModel;
 
 namespace Vkm.Radar.Radar.RadarComponents
 {
-    internal class DisappearingComponent : UserControl
+    public class DisappearingComponent : UserControl
     {
         protected FrameworkElement BaseElement { get; set; }
 
@@ -29,7 +29,7 @@ namespace Vkm.Radar.Radar.RadarComponents
             ((IDetectableComponent)DataContext).TargetDetected = new DelegateCommand<double>(OnTargetDetected);
         }
 
-        private void OnTargetDetected(double opacityMultiplier)
+        protected virtual void OnTargetDetected(double opacityMultiplier)
         {
             if (Application.Current != null)
             {

@@ -89,6 +89,9 @@
     <Compile Include="Radar\RadarComponents\ScanLine.xaml.cs">
       <DependentUpon>ScanLine.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Radar\RadarComponents\StructuralCircle.xaml.cs">
+      <DependentUpon>StructuralCircle.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Radar\RadarComponents\Target.xaml.cs">
       <DependentUpon>Target.xaml</DependentUpon>
     </Compile>
@@ -116,6 +119,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Radar\RadarComponents\ScanLine.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Radar\RadarComponents\StructuralCircle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
