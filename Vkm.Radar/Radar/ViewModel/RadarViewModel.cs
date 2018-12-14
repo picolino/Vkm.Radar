@@ -40,9 +40,13 @@ namespace Vkm.Radar.Radar.ViewModel
 
         private void InitializeComponents(bool useStructuralComponents)
         {
-            UseDefaultStructuralComponents = useStructuralComponents;
             Components.Add(ScanLine);
             DetectableComponents = new LinkedList<IDetectableComponent>();
+            UseDefaultStructuralComponents = useStructuralComponents;
+            if (useStructuralComponents)
+            {
+                AddDefaultStructuralComponents();
+            }
         }
 
         public void AddTarget(double azimuth, double range, double width, double opacityMultiplier = 1)
@@ -59,7 +63,18 @@ namespace Vkm.Radar.Radar.ViewModel
 
         private void AddDefaultStructuralComponents()
         {
-            throw new NotImplementedException();
+            for (var i = 0; i < 360; i += 10)
+            {
+                if (i % 30 == 0)
+                {
+                    var bigRadialStructuralComponentFirst = new StructuralRadialComponent(i - 0.2, 0.4);
+                    var bigRadialStructuralComponentSecond = new StructuralRadialComponent(i + 0.2, 0.4);
+                    AddComponent(bigRadialStructuralComponentFirst);
+                    AddComponent(bigRadialStructuralComponentSecond);
+                }
+                var radialStructuralComponent = new StructuralRadialComponent(i, 0.1);
+                AddComponent(radialStructuralComponent);
+            }
         }
 
         private void AddComponents<T>(IEnumerable<T> components) where T : IPositionalComponent, IDetectableComponent
@@ -101,9 +116,26 @@ namespace Vkm.Radar.Radar.ViewModel
         {
             for (var i = Components.Count - 1; i > 0; i--)
             {
+                var component = Components[i];
+                if (component is IStructuralComponent)
+                {
+                    continue;
+                }
                 Components.RemoveAt(i);
             }
-            DetectableComponents.Clear();
+
+            for (var it = DetectableComponents.First; it != null;)
+            {
+                var next = it.Next;
+                if (it.Value is IStructuralComponent)
+                {
+                    it = next;
+                    continue;
+                }
+
+                DetectableComponents.Remove(it);
+                it = next;
+            }
         }
 
         private void OnLoaded()

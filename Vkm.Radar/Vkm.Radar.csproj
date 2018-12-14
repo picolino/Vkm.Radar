@@ -93,11 +93,13 @@
       <DependentUpon>Target.xaml</DependentUpon>
     </Compile>
     <Compile Include="Radar\RadarComponents\ViewModel\IRadarComponent.cs" />
+    <Compile Include="Radar\RadarComponents\ViewModel\IStructuralComponent.cs" />
     <Compile Include="Radar\RadarComponents\ViewModel\RadarComponentBase.cs" />
     <Compile Include="Radar\RadarComponents\ViewModel\IDetectableComponent.cs" />
     <Compile Include="Radar\RadarComponents\ViewModel\IPositionalComponent.cs" />
     <Compile Include="Radar\RadarComponents\ViewModel\NoiseViewModel.cs" />
     <Compile Include="Radar\RadarComponents\ViewModel\ScanLineViewModel.cs" />
+    <Compile Include="Radar\RadarComponents\ViewModel\StructuralRadialComponent.cs" />
     <Compile Include="Radar\ViewModel\RadarViewModel.cs" />
     <Compile Include="Radar\RadarComponents\ViewModel\TargetViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />

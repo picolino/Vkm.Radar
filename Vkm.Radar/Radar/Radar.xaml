@@ -58,7 +58,5 @@
                 </DataTemplate>
             </ItemsControl.Resources>
         </ItemsControl>
-        <Rectangle Fill="Black" IsHitTestVisible="False" Grid.Column="1" Grid.RowSpan="3" />
-        <Rectangle Fill="Black" IsHitTestVisible="False" Grid.Row="1" Grid.ColumnSpan="3" />
     </Grid>
 </UserControl>

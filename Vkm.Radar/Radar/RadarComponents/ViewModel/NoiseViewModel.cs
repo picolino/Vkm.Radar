@@ -5,7 +5,7 @@ namespace Vkm.Radar.Radar.RadarComponents.ViewModel
 {
     internal class NoiseViewModel : RadarComponentBase, IDetectableComponent, IPositionalComponent
     {
-        private NoiseViewModel(double azimuth, double opacityMultiplier) : base(azimuth, opacityMultiplier)
+        public NoiseViewModel(double azimuth, double opacityMultiplier) : base(azimuth, opacityMultiplier)
         {
         }
 
@@ -20,7 +20,7 @@ namespace Vkm.Radar.Radar.RadarComponents.ViewModel
 
         public void WhenDetected(double opacityMultiplier)
         {
-            TargetDetected.Execute(opacityMultiplier);
+            TargetDetected.Execute(opacityMultiplier * OpacityMultiplier);
         }
 
         public IEnumerable<NoiseViewModel> GenerateNoisesCollection()
