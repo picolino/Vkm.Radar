@@ -7,10 +7,10 @@ namespace Vkm.Radar.Radar.RadarComponents.ViewModel
     {
         public ICommand TargetDetected { get; set; }
 
-        public TargetViewModel(double azimuth, double range, double length, double thickness) : base(azimuth)
+        public TargetViewModel(double azimuth, double range, double length, double thickness, double opacityMultiplier) : base(azimuth, opacityMultiplier)
         {
             Range = range;
-            Length = length;
+            Length = InitialLength = length;
             Thickness = thickness;
         }
 
@@ -20,6 +20,7 @@ namespace Vkm.Radar.Radar.RadarComponents.ViewModel
             set { SetProperty(() => Range, value); }
         }
 
+        public double InitialLength { get; }
         public double Length
         {
             get { return GetProperty(() => Length); }
@@ -34,10 +35,10 @@ namespace Vkm.Radar.Radar.RadarComponents.ViewModel
 
         public double PosTop => Range * Math.Sin(Azimuth / 180d * Math.PI) + Constants.RadarCenterY;
         public double PosLeft => Range * Math.Cos(Azimuth / 180d * Math.PI) + Constants.RadarCenterX;
-
-        public void WhenDetected()
+        
+        public void WhenDetected(double opacityMultiplier)
         {
-            TargetDetected.Execute(null);
+            TargetDetected.Execute(opacityMultiplier * OpacityMultiplier);
         }
     }
 }

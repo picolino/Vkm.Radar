@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
@@ -8,7 +9,7 @@ using Vkm.Radar.Radar.RadarComponents.ViewModel;
 
 namespace Vkm.Radar.Radar.RadarComponents
 {
-    internal class DisappearingComponent : UserControl
+    public class DisappearingComponent : UserControl
     {
         protected FrameworkElement BaseElement { get; set; }
 
@@ -26,16 +27,22 @@ namespace Vkm.Radar.Radar.RadarComponents
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
-            ((IDetectableComponent)DataContext).TargetDetected = new DelegateCommand(OnTargetDetected);
+            if (DataContext != null && !DesignerProperties.GetIsInDesignMode(new DependencyObject()))
+            {
+                ((IDetectableComponent)DataContext).TargetDetected = new DelegateCommand<double>(OnTargetDetected);
+            }
         }
 
-        private void OnTargetDetected()
+        protected virtual void OnTargetDetected(double opacityMultiplier)
         {
-            Application.Current.Dispatcher.BeginInvoke(new ThreadStart(() =>
-                                                                       {
-                                                                           var detectedAnimation = new DoubleAnimation(1.0, 0.0, new Duration(TimeSpan.FromSeconds(7)));
-                                                                           BaseElement.BeginAnimation(OpacityProperty, detectedAnimation);
-                                                                       }));
+            if (Application.Current != null)
+            {
+                Application.Current.Dispatcher.BeginInvoke(new ThreadStart(() =>
+                                                                           {
+                                                                               var detectedAnimation = new DoubleAnimation(1.0 * opacityMultiplier, 0.0, new Duration(TimeSpan.FromSeconds(7)));
+                                                                               BaseElement.BeginAnimation(OpacityProperty, detectedAnimation);
+                                                                           }));
+            }
         }
     }
 }

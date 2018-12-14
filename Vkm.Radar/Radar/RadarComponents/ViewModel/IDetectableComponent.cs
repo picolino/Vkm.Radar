@@ -5,6 +5,6 @@ namespace Vkm.Radar.Radar.RadarComponents.ViewModel
     internal interface IDetectableComponent : IRadarComponent
     {
         ICommand TargetDetected { get; set; }
-        void WhenDetected();
+        void WhenDetected(double opacityMultiplier);
     }
 }

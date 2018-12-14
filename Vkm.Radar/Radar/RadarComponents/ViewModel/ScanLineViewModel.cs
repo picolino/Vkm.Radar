@@ -5,9 +5,10 @@ namespace Vkm.Radar.Radar.RadarComponents.ViewModel
 {
     internal class ScanLineViewModel : RadarComponentBase, IPositionalComponent
     {
-        public ScanLineViewModel(double azimuth, double pulseDuration) : base(azimuth)
+        public ScanLineViewModel(double azimuth, double pulseDuration, double pulseLength, double opacityMultiplier = 1) : base(azimuth, opacityMultiplier)
         {
             PulseDuration = pulseDuration;
+            PulseLength = pulseLength;
         }
 
         public IEnumerable<TargetViewModel> RadarTargets { private get; set; }
@@ -28,6 +29,25 @@ namespace Vkm.Radar.Radar.RadarComponents.ViewModel
             foreach (var target in RadarTargets)
             {
                 target.Thickness = PulseDuration;
+            }
+        }
+
+        public double PulseLength
+        {
+            get { return GetProperty(() => PulseLength); }
+            set { SetProperty(() => PulseLength, value, OnPulseLengthChanged); }
+        }
+
+        private void OnPulseLengthChanged()
+        {
+            if (RadarTargets is null)
+            {
+                return;
+            }
+
+            foreach (var target in RadarTargets)
+            {
+                target.Length = target.InitialLength * PulseLength;
             }
         }
 

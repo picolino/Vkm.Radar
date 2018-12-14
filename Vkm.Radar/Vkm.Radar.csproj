@@ -61,6 +61,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Dialog\PresetSelectorDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -71,6 +75,9 @@
     </Compile>
     <Compile Include="Converters\BaseConverter.cs" />
     <Compile Include="Converters\DoubleInverseConverter.cs" />
+    <Compile Include="Dialog\PresetSelectorDialog.xaml.cs">
+      <DependentUpon>PresetSelectorDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Radar\Constants.cs" />
     <Compile Include="Radar\Radar.xaml.cs">
       <DependentUpon>Radar.xaml</DependentUpon>
@@ -82,15 +89,21 @@
     <Compile Include="Radar\RadarComponents\ScanLine.xaml.cs">
       <DependentUpon>ScanLine.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Radar\RadarComponents\StructuralCircle.xaml.cs">
+      <DependentUpon>StructuralCircle.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Radar\RadarComponents\Target.xaml.cs">
       <DependentUpon>Target.xaml</DependentUpon>
     </Compile>
     <Compile Include="Radar\RadarComponents\ViewModel\IRadarComponent.cs" />
+    <Compile Include="Radar\RadarComponents\ViewModel\IStructuralComponent.cs" />
     <Compile Include="Radar\RadarComponents\ViewModel\RadarComponentBase.cs" />
     <Compile Include="Radar\RadarComponents\ViewModel\IDetectableComponent.cs" />
     <Compile Include="Radar\RadarComponents\ViewModel\IPositionalComponent.cs" />
     <Compile Include="Radar\RadarComponents\ViewModel\NoiseViewModel.cs" />
     <Compile Include="Radar\RadarComponents\ViewModel\ScanLineViewModel.cs" />
+    <Compile Include="Radar\RadarComponents\ViewModel\StructuralCircleComponentViewModel.cs" />
+    <Compile Include="Radar\RadarComponents\ViewModel\StructuralRadialComponentViewModel.cs" />
     <Compile Include="Radar\ViewModel\RadarViewModel.cs" />
     <Compile Include="Radar\RadarComponents\ViewModel\TargetViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
@@ -107,6 +120,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Radar\RadarComponents\ScanLine.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Radar\RadarComponents\StructuralCircle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

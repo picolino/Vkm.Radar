@@ -9,13 +9,10 @@
              xmlns:radar="clr-namespace:Vkm.Radar.Radar"
              xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
              mc:Ignorable="d"
-             d:DesignHeight="500" d:DesignWidth="500">
+             d:DesignHeight="500" d:DesignWidth="500" d:DataContext="{d:DesignInstance Type={x:Type viewModel:RadarViewModel}}">
     <dxmvvm:Interaction.Behaviors>
         <dxmvvm:EventToCommand Event="Loaded" Command="{Binding Path=LoadedCommand}"/>
     </dxmvvm:Interaction.Behaviors>
-    <UserControl.DataContext>
-        <viewModel:RadarViewModel />
-    </UserControl.DataContext>
     <Grid Width="{x:Static radar:Constants.RadarDiameter}" Height="{x:Static radar:Constants.RadarDiameter}" SnapsToDevicePixels="True">
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
@@ -59,9 +56,10 @@
                 <DataTemplate DataType="{x:Type componentsVM:NoiseViewModel}">
                     <components:Noise Tag="{Binding ElementName=PART_Canvas}" />
                 </DataTemplate>
+                <DataTemplate DataType="{x:Type componentsVM:StructuralCircleComponentViewModel}">
+                    <components:StructuralCircle Tag="{Binding ElementName=PART_Canvas}" />
+                </DataTemplate>
             </ItemsControl.Resources>
         </ItemsControl>
-        <Rectangle Fill="Black" IsHitTestVisible="False" Grid.Column="1" Grid.RowSpan="3" />
-        <Rectangle Fill="Black" IsHitTestVisible="False" Grid.Row="1" Grid.ColumnSpan="3" />
     </Grid>
 </UserControl>

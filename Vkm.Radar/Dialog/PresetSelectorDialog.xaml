@@ -1,0 +1,27 @@
+﻿<Window x:Class="Vkm.Radar.Dialog.PresetSelectorDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Выбор набора" Height="236.424" Width="304.305"
+        ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"/>
+            <RowDefinition/>
+            <RowDefinition Height="10"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
+        <ListView Grid.Row="1" Grid.Column="1" x:Name="PART_ListView" SelectionMode="Single" SelectionChanged="OnItemSelected">
+            <ListViewItem Content="Помеха перед"/>
+            <ListViewItem Content="Помеха за целью"/>
+            <ListViewItem Content="Высокая частота импульсов / 2 цели"/>
+            <ListViewItem Content="Высокая длина импульсов / 2 цели"/>
+        </ListView>
+    </Grid>
+</Window>
