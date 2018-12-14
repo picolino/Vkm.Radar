@@ -7,12 +7,11 @@ namespace Vkm.Radar.Radar.RadarComponents.ViewModel
     {
         public ICommand TargetDetected { get; set; }
 
-        public TargetViewModel(double azimuth, double range, double length, double thickness, double opacityMultiplier) : base(azimuth)
+        public TargetViewModel(double azimuth, double range, double length, double thickness, double opacityMultiplier) : base(azimuth, opacityMultiplier)
         {
             Range = range;
             Length = InitialLength = length;
             Thickness = thickness;
-            OpacityMultiplier = opacityMultiplier;
         }
 
         public double Range
@@ -36,9 +35,7 @@ namespace Vkm.Radar.Radar.RadarComponents.ViewModel
 
         public double PosTop => Range * Math.Sin(Azimuth / 180d * Math.PI) + Constants.RadarCenterY;
         public double PosLeft => Range * Math.Cos(Azimuth / 180d * Math.PI) + Constants.RadarCenterX;
-
-        public double OpacityMultiplier { get; }
-
+        
         public void WhenDetected(double opacityMultiplier)
         {
             TargetDetected.Execute(opacityMultiplier * OpacityMultiplier);

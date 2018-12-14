@@ -5,11 +5,11 @@ namespace Vkm.Radar.Radar.RadarComponents.ViewModel
 {
     internal class NoiseViewModel : RadarComponentBase, IDetectableComponent, IPositionalComponent
     {
-        private NoiseViewModel(double azimuth) : base(azimuth)
+        private NoiseViewModel(double azimuth, double opacityMultiplier) : base(azimuth, opacityMultiplier)
         {
         }
 
-        public NoiseViewModel(double azimuth, int count) : base(azimuth)
+        public NoiseViewModel(double azimuth, int count, double opacityMultiplier) : base(azimuth, opacityMultiplier)
         {
             Count = count;
         }
@@ -30,7 +30,7 @@ namespace Vkm.Radar.Radar.RadarComponents.ViewModel
 
             for (var a = beginAzimuth; a < endAzimuth; a += 0.5)
             {
-                yield return new NoiseViewModel(a);
+                yield return new NoiseViewModel(a, OpacityMultiplier);
             }
         }
 

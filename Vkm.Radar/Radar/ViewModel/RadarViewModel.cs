@@ -50,13 +50,18 @@ namespace Vkm.Radar.Radar.ViewModel
             AddComponent(newTarget);
         }
 
-        public void AddNoise(double azimuth, int width)
+        public void AddNoise(double azimuth, int width, double opacityMultiplier = 1)
         {
-            var noises = new NoiseViewModel(azimuth, width).GenerateNoisesCollection();
+            var noises = new NoiseViewModel(azimuth, width, opacityMultiplier).GenerateNoisesCollection();
             foreach (var noise in noises)
             {
                 AddComponent(noise);
             }
+        }
+
+        private void AddDefaultStructuralComponents()
+        {
+            throw new NotImplementedException();
         }
 
         private void AddComponent<T>(T component) where T : IPositionalComponent, IDetectableComponent
@@ -153,5 +158,11 @@ namespace Vkm.Radar.Radar.ViewModel
         }
 
         public double OpacityMultiplier { get; set; }
+
+        public bool UseDefaultStructuralComponents
+        {
+            get { return GetProperty(() => UseDefaultStructuralComponents); }
+            set { SetProperty(() => UseDefaultStructuralComponents, value); }
+        }
     }
 }

@@ -5,7 +5,7 @@ namespace Vkm.Radar.Radar.RadarComponents.ViewModel
 {
     internal class ScanLineViewModel : RadarComponentBase, IPositionalComponent
     {
-        public ScanLineViewModel(double azimuth, double pulseDuration, double pulseLength) : base(azimuth)
+        public ScanLineViewModel(double azimuth, double pulseDuration, double pulseLength, double opacityMultiplier = 1) : base(azimuth, opacityMultiplier)
         {
             PulseDuration = pulseDuration;
             PulseLength = pulseLength;
