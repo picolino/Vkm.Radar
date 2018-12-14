@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
@@ -26,7 +27,10 @@ namespace Vkm.Radar.Radar.RadarComponents
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
-            ((IDetectableComponent)DataContext).TargetDetected = new DelegateCommand<double>(OnTargetDetected);
+            if (DataContext != null && !DesignerProperties.GetIsInDesignMode(new DependencyObject()))
+            {
+                ((IDetectableComponent)DataContext).TargetDetected = new DelegateCommand<double>(OnTargetDetected);
+            }
         }
 
         protected virtual void OnTargetDetected(double opacityMultiplier)

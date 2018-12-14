@@ -102,7 +102,8 @@
     <Compile Include="Radar\RadarComponents\ViewModel\IPositionalComponent.cs" />
     <Compile Include="Radar\RadarComponents\ViewModel\NoiseViewModel.cs" />
     <Compile Include="Radar\RadarComponents\ViewModel\ScanLineViewModel.cs" />
-    <Compile Include="Radar\RadarComponents\ViewModel\StructuralRadialComponent.cs" />
+    <Compile Include="Radar\RadarComponents\ViewModel\StructuralCircleComponentViewModel.cs" />
+    <Compile Include="Radar\RadarComponents\ViewModel\StructuralRadialComponentViewModel.cs" />
     <Compile Include="Radar\ViewModel\RadarViewModel.cs" />
     <Compile Include="Radar\RadarComponents\ViewModel\TargetViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />

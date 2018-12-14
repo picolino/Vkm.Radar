@@ -2,6 +2,6 @@
 {
     internal interface IStructuralComponent
     {
-        bool IsStructuralComponent { get; }
+        bool IsAlwaysDetectable { get; }
     }
 }

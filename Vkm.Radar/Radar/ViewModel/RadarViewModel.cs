@@ -67,12 +67,12 @@ namespace Vkm.Radar.Radar.ViewModel
             {
                 if (i % 30 == 0)
                 {
-                    var bigRadialStructuralComponentFirst = new StructuralRadialComponent(i - 0.2, 0.4);
-                    var bigRadialStructuralComponentSecond = new StructuralRadialComponent(i + 0.2, 0.4);
+                    var bigRadialStructuralComponentFirst = new StructuralRadialComponentViewModel(i - 0.2, 0.4);
+                    var bigRadialStructuralComponentSecond = new StructuralRadialComponentViewModel(i + 0.2, 0.4);
                     AddComponent(bigRadialStructuralComponentFirst);
                     AddComponent(bigRadialStructuralComponentSecond);
                 }
-                var radialStructuralComponent = new StructuralRadialComponent(i, 0.1);
+                var radialStructuralComponent = new StructuralRadialComponentViewModel(i, 0.1);
                 AddComponent(radialStructuralComponent);
             }
         }

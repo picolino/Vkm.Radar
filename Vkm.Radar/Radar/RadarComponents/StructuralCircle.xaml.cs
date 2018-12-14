@@ -5,7 +5,7 @@ namespace Vkm.Radar.Radar.RadarComponents
     /// <summary>
     /// Interaction logic for StructuralCircle.xaml
     /// </summary>
-    public partial class StructuralCircle : DisappearingComponent
+    internal partial class StructuralCircle : DisappearingComponent
     {
         public StructuralCircle()
         {
