@@ -6,21 +6,26 @@
         xmlns:viewModel="clr-namespace:Vkm.Radar.ViewModel"
         xmlns:radar="clr-namespace:Vkm.Radar.Radar"
         mc:Ignorable="d"
-        Title="Vkm.Radar" 
+        Title="Симулятор радара" 
         ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
         Height="800" 
         Width="550">
     <Window.DataContext>
         <viewModel:MainWindowViewModel/>
     </Window.DataContext>
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="37*"/>
+            <ColumnDefinition Width="72*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <radar:Radar Grid.Row="0" Margin="10" DataContext="{Binding RadarViewModel}"/>
-        <Grid Grid.Row="1">
+        <radar:Radar Grid.Row="0" Margin="10" DataContext="{Binding RadarViewModel}" Grid.ColumnSpan="2"/>
+        <Grid Grid.Row="1" Grid.ColumnSpan="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="10"/>
                 <RowDefinition Height="Auto"/>
@@ -41,7 +46,7 @@
                 <ColumnDefinition/>
                 <ColumnDefinition Width="10"/>
             </Grid.ColumnDefinitions>
-            
+
             <Button Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Content="Добавить цель" Command="{Binding Path=CreateTargetCommand}"/>
 
             <TextBlock Grid.Row="3" Grid.Column="1" Text="Скорость вращения линии развертки:"/>
@@ -56,7 +61,7 @@
             <TextBlock Grid.Row="9" Grid.Column="1" Text="Ширина диаграммы направленности:"/>
             <Slider Grid.Row="9" Grid.Column="3" Value="{Binding Path=RadarViewModel.ScanLinePulseLength}" Minimum="0" Maximum="2"/>
         </Grid>
-        <Grid Grid.Row="2" Margin="0 10 0 10">
+        <Grid Grid.Row="2" Margin="0 10 0 10" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="10"/>
                 <ColumnDefinition/>
