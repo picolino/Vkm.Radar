@@ -4,10 +4,12 @@ namespace Vkm.Radar.Radar.RadarComponents.ViewModel
 {
     internal abstract class RadarComponentBase : ViewModelBase, IRadarComponent
     {
-        protected RadarComponentBase(double azimuth, double opacityMultiplier)
+        private readonly double internalOpacityMultiplier;
+
+        protected RadarComponentBase(double azimuth, double opacity)
         {
             Azimuth = azimuth;
-            OpacityMultiplier = opacityMultiplier;
+            Opacity = internalOpacityMultiplier = opacity;
         }
 
         public double Azimuth
@@ -25,7 +27,11 @@ namespace Vkm.Radar.Radar.RadarComponents.ViewModel
                 SetProperty(() => Azimuth, value);
             }
         }
-        
-        public double OpacityMultiplier { get; }
+
+        public double Opacity
+        {
+            get { return GetProperty(() => Opacity); }
+            set { SetProperty(() => Opacity, value * internalOpacityMultiplier); }
+        }
     }
 }

@@ -3,5 +3,6 @@
     internal interface IRadarComponent
     {
         double Azimuth { get; set; }
+        double Opacity { get; set; }
     }
 }

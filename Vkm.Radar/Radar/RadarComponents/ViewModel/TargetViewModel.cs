@@ -5,7 +5,7 @@ namespace Vkm.Radar.Radar.RadarComponents.ViewModel
 {
     internal class TargetViewModel : RadarComponentBase, IPositionalComponent, IDetectableComponent
     {
-        public TargetViewModel(double azimuth, double range, double length, double thickness, double opacityMultiplier) : base(azimuth, opacityMultiplier)
+        public TargetViewModel(double azimuth, double range, double length, double thickness, double opacity) : base(azimuth, opacity)
         {
             Range = range;
             Length = InitialLength = length;

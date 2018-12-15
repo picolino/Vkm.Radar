@@ -194,7 +194,19 @@ namespace Vkm.Radar.Radar.ViewModel
             set { SetProperty(() => ScanLineAzimuth, value); }
         }
 
-        public double OpacityMultiplier { get; set; }
+        public double OpacityMultiplier
+        {
+            get { return GetProperty(() => OpacityMultiplier); }
+            set { SetProperty(() => OpacityMultiplier, value, OnOpacityMultiplierChanged); }
+        }
+
+        private void OnOpacityMultiplierChanged()
+        {
+            foreach (var component in DetectableComponents)
+            {
+                component.Opacity = OpacityMultiplier;
+            }
+        }
 
         public bool UseDefaultStructuralComponents
         {

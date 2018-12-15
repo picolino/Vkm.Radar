@@ -9,7 +9,7 @@ namespace Vkm.Radar.Radar.RadarComponents.ViewModel
             set { SetProperty(() => Radius, value * 2); }
         }
 
-        public StructuralCircleComponentViewModel(double azimuth, double opacityMultiplier, double radius) : base(azimuth, opacityMultiplier)
+        public StructuralCircleComponentViewModel(double azimuth, double opacity, double radius) : base(azimuth, opacity)
         {
             Radius = radius;
         }

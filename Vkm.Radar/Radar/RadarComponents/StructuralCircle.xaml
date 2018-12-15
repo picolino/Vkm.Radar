@@ -13,7 +13,7 @@
                  Width="{Binding Path=Radius}"
                  Height="{Binding Path=Radius}"
                  StrokeThickness="3" 
-                 Opacity="{Binding Path=OpacityMultiplier}">
+                 Opacity="{Binding Path=Opacity}">
         </Ellipse>
     </Grid>
 </UserControl>

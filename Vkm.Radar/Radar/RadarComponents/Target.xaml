@@ -13,7 +13,7 @@
           StrokeThickness="{Binding Path=Thickness}"
           Stroke="GreenYellow"
           
-          Opacity="{Binding Path=OpacityMultiplier}">
+          Opacity="{Binding Path=Opacity}">
         <Line.RenderTransform>
             <RotateTransform Angle="{Binding Path=Azimuth}" />
         </Line.RenderTransform>
