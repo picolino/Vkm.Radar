@@ -18,7 +18,7 @@
             <ColumnDefinition Width="10"/>
         </Grid.ColumnDefinitions>
         <ListView Grid.Row="1" Grid.Column="1" x:Name="PART_ListView" SelectionMode="Single" SelectionChanged="OnItemSelected">
-            <ListViewItem Content="Помеха перед"/>
+            <ListViewItem Content="Помеха перед целью"/>
             <ListViewItem Content="Помеха за целью"/>
             <ListViewItem Content="Высокая частота импульсов / 2 цели"/>
             <ListViewItem Content="Высокая длина импульсов / 2 цели"/>

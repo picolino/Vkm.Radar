@@ -184,8 +184,9 @@ namespace Vkm.Radar.Radar.ViewModel
 
         public double ScanLineTimerInterval
         {
-            get => ScanLineTimer.Interval;
-            set => ScanLineTimer.Interval = value;
+            // TODO: 21 тут потому что MaxValue в MainWindow.xaml для соответствующего слайдера имеет значение 20.
+            get => 21 - ScanLineTimer.Interval; 
+            set => ScanLineTimer.Interval = 21 - value;
         }
 
         public double ScanLineAzimuth
