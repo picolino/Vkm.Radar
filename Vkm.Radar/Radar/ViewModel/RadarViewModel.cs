@@ -182,7 +182,7 @@ namespace Vkm.Radar.Radar.ViewModel
             set => ScanLine.PulseLength = value;
         }
 
-        public double ScanLineTimerInterval
+        public double ScanLineTimerSpeed
         {
             // TODO: 21 тут потому что MaxValue в MainWindow.xaml для соответствующего слайдера имеет значение 20.
             get => 21 - ScanLineTimer.Interval; 
