@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Выбор набора" Height="236.424" Width="304.305"
+        Title="Выбор набора" Height="236.424" Width="380.046"
         ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
     <Grid>
         <Grid.RowDefinitions>
@@ -18,10 +18,10 @@
             <ColumnDefinition Width="10"/>
         </Grid.ColumnDefinitions>
         <ListView Grid.Row="1" Grid.Column="1" x:Name="PART_ListView" SelectionMode="Single" SelectionChanged="OnItemSelected">
-            <ListViewItem Content="Помеха перед целью"/>
-            <ListViewItem Content="Помеха за целью"/>
-            <ListViewItem Content="Высокая частота импульсов / 2 цели"/>
-            <ListViewItem Content="Высокая длина импульсов / 2 цели"/>
+            <ListViewItem Content="Станция помех ближе, чем цель"/>
+            <ListViewItem Content="Станция помех дальше, чем цель"/>
+            <ListViewItem Content="Две цели на одном азимуте, но на разных расстояниях"/>
+            <ListViewItem Content="Две цели на одном расстоянии, но на разных азимутах"/>
         </ListView>
     </Grid>
 </Window>

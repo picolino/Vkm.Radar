@@ -43,19 +43,19 @@ namespace Vkm.Radar.ViewModel
             {
                 case 0:
                     RadarViewModel.AddNoise(45, 20);
-                    RadarViewModel.AddTarget(45, 120, 4, 0.3);
+                    RadarViewModel.AddTarget(45, 120, 4, 0.5);
                     break;
                 case 1:
-                    RadarViewModel.AddNoise(45, 10);
-                    RadarViewModel.AddTarget(45, 120, 4, 0.7);
+                    RadarViewModel.AddNoise(45, 10, 0.8);
+                    RadarViewModel.AddTarget(45, 120, 4);
                     break;
                 case 2:
-                    RadarViewModel.AddTarget(45, 104, 4);
+                    RadarViewModel.AddTarget(45, 103, 4);
                     RadarViewModel.AddTarget(45, 100, 4);
                     break;
                 case 3:
-                    RadarViewModel.AddTarget(45, 100, 4);
-                    RadarViewModel.AddTarget(50, 100, 4);
+                    RadarViewModel.AddTarget(45, 120, 4);
+                    RadarViewModel.AddTarget(50, 120, 4);
                     break;
             }
         }

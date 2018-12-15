@@ -21,7 +21,7 @@ namespace Vkm.Radar.Radar.RadarComponents.ViewModel
             var beginAzimuth = Azimuth - Count / 2.0;
             var endAzimuth = Azimuth + Count / 2.0;
 
-            for (var a = beginAzimuth; a < endAzimuth; a += 0.5)
+            for (var a = beginAzimuth; a < endAzimuth; a += 0.2)
             {
                 yield return new NoiseViewModel(a, Opacity);
             }
