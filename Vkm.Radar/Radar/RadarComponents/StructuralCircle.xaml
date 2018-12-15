@@ -5,14 +5,15 @@
                              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                              xmlns:viewModel="clr-namespace:Vkm.Radar.Radar.RadarComponents.ViewModel"
                              mc:Ignorable="d"
-                             d:DesignHeight="450" d:DesignWidth="450"
+                             d:DesignHeight="500" d:DesignWidth="500"
                              d:DataContext="{d:DesignInstance Type=viewModel:StructuralCircleComponentViewModel}"
                              x:ClassModifier="internal">
     <Grid>
-        <Ellipse x:Name="PART_Ellipse"
-                 Stroke="GreenYellow"
+        <Ellipse Stroke="GreenYellow"
                  Width="{Binding Path=Radius}"
                  Height="{Binding Path=Radius}"
-                 StrokeThickness="3" />
+                 StrokeThickness="3" 
+                 Opacity="{Binding Path=OpacityMultiplier}">
+        </Ellipse>
     </Grid>
 </UserControl>

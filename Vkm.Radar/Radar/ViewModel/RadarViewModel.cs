@@ -72,9 +72,17 @@ namespace Vkm.Radar.Radar.ViewModel
                     AddComponent(bigRadialStructuralComponentFirst);
                     AddComponent(bigRadialStructuralComponentSecond);
                 }
-                var radialStructuralComponent = new StructuralRadialComponentViewModel(i, 0.1);
-                AddComponent(radialStructuralComponent);
+                else
+                {
+                    var radialStructuralComponent = new StructuralRadialComponentViewModel(i, 0.1);
+                    AddComponent(radialStructuralComponent);
+                }
             }
+
+            var firstCircle = new StructuralCircleComponentViewModel(0, 0.4, 100);
+            var secondCircle = new StructuralCircleComponentViewModel(0, 0.4, 200);
+            AddComponent(firstCircle);
+            AddComponent(secondCircle);
         }
 
         private void AddComponents<T>(IEnumerable<T> components) where T : IPositionalComponent, IDetectableComponent
@@ -85,7 +93,7 @@ namespace Vkm.Radar.Radar.ViewModel
             }
         }
 
-        private void AddComponent<T>(T component) where T : IPositionalComponent, IDetectableComponent
+        private void AddComponent<T>(T component) where T : IDetectableComponent, IPositionalComponent
         {
             Components.Add(component);
             if (DetectableComponents?.Count == 0)
