@@ -50,12 +50,12 @@ namespace Vkm.Radar.ViewModel
                     RadarViewModel.AddTarget(45, 120, 3);
                     break;
                 case 2:
-                    RadarViewModel.AddTarget(45, 103, 4);
-                    RadarViewModel.AddTarget(45, 100, 4);
+                    RadarViewModel.AddTarget(45, 159, 4);
+                    RadarViewModel.AddTarget(45, 156, 4);
                     break;
                 case 3:
-                    RadarViewModel.AddTarget(45, 120, 4);
-                    RadarViewModel.AddTarget(50, 120, 4);
+                    RadarViewModel.AddTarget(43, 120, 3);
+                    RadarViewModel.AddTarget(51, 120, 3);
                     break;
             }
         }
