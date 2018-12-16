@@ -60,15 +60,8 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Dialog\PresetSelectorDialog.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Compile Include="Converters\BaseConverter.cs" />
     <Compile Include="Converters\DoubleInverseConverter.cs" />
-    <Compile Include="Dialog\PresetSelectorDialog.xaml.cs">
-      <DependentUpon>PresetSelectorDialog.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Radar\Common\Interfaces\INoisesFactory.cs" />
     <Compile Include="Radar\Common\NoisesFactory.cs" />
     <Compile Include="Radar\Constants.cs" />
@@ -147,5 +140,6 @@
   <ItemGroup>
     <Resource Include="Radar\Images\conical-gradient.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

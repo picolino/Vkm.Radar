@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Input;
 using DevExpress.Mvvm;
-using Vkm.Radar.Dialog;
+using Vkm.Radar.Example.Dialog;
 using Vkm.Radar.Radar;
 using Vkm.Radar.Radar.ViewModel;
 

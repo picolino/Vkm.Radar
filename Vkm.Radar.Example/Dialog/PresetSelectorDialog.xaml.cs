@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace Vkm.Radar.Dialog
+namespace Vkm.Radar.Example.Dialog
 {
     /// <summary>
     /// Interaction logic for PresetSelectorDialog.xaml
