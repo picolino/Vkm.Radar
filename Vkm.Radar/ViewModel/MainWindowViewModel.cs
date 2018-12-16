@@ -46,8 +46,8 @@ namespace Vkm.Radar.ViewModel
                     RadarViewModel.AddTarget(45, 120, 4, 0.5);
                     break;
                 case 1:
-                    RadarViewModel.AddNoise(45, 10, 0.8);
-                    RadarViewModel.AddTarget(45, 120, 4);
+                    RadarViewModel.AddNoise(45, 10, 0.3);
+                    RadarViewModel.AddTarget(45, 120, 3);
                     break;
                 case 2:
                     RadarViewModel.AddTarget(45, 103, 4);

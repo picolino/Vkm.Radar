@@ -5,12 +5,16 @@ using System.Linq;
 using System.Timers;
 using System.Windows.Input;
 using DevExpress.Mvvm;
+using Vkm.Radar.Radar.Common;
+using Vkm.Radar.Radar.Common.Interfaces;
 using Vkm.Radar.Radar.RadarComponents.ViewModel;
 
 namespace Vkm.Radar.Radar.ViewModel
 {
     public class RadarViewModel : ViewModelBase
     {
+        private readonly INoisesFactory noisesFactory;
+
         private ScanLineViewModel ScanLine { get; }
         private Timer ScanLineTimer { get; }
 
@@ -23,6 +27,8 @@ namespace Vkm.Radar.Radar.ViewModel
 
         public RadarViewModel(bool useStructuralComponents)
         {
+            noisesFactory = new NoisesFactory();
+
             LoadedCommand = new DelegateCommand(OnLoaded);
 
             ScanLineTimer = new Timer(10);
@@ -60,12 +66,9 @@ namespace Vkm.Radar.Radar.ViewModel
             AddComponent(newTarget);
         }
 
-        public void AddNoise(double azimuth, int count, double opacityMultiplier = 1)
+        public void AddNoise(double azimuth, int count, double opacity = 1)
         {
-            var noises = new NoiseViewModel(azimuth, count, opacityMultiplier)
-                         {
-                             Opacity = OpacityMultiplier
-                         }.GenerateNoisesCollection();
+            var noises = noisesFactory.GenerateNoisesCollection(azimuth, count, opacity, OpacityMultiplier);
             AddComponents(noises);
         }
 
