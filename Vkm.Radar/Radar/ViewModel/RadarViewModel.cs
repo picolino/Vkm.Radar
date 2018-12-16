@@ -51,13 +51,22 @@ namespace Vkm.Radar.Radar.ViewModel
 
         public void AddTarget(double azimuth, double range, double width, double opacityMultiplier = 1)
         {
-            var newTarget = new TargetViewModel(azimuth, range, width, ScanLine.PulseDuration, opacityMultiplier);
+            var newTarget = new TargetViewModel(azimuth, range, width, opacityMultiplier)
+                            {
+                                Thickness = ScanLine.TargetsThickness,
+                                Length = ScanLine.TargetsLength,
+                                Opacity = OpacityMultiplier
+                            };
+
             AddComponent(newTarget);
         }
 
-        public void AddNoise(double azimuth, int width, double opacityMultiplier = 1)
+        public void AddNoise(double azimuth, int count, double opacityMultiplier = 1)
         {
-            var noises = new NoiseViewModel(azimuth, width, opacityMultiplier).GenerateNoisesCollection();
+            var noises = new NoiseViewModel(azimuth, count, opacityMultiplier)
+                         {
+                             Opacity = OpacityMultiplier
+                         }.GenerateNoisesCollection();
             AddComponents(noises);
         }
 
@@ -170,16 +179,16 @@ namespace Vkm.Radar.Radar.ViewModel
             ScanLineAzimuth = ScanLine.Azimuth;
         }
 
-        public double ScanLinePulseDuration
+        public double ScanLineTargetThickness
         {
-            get => ScanLine.PulseDuration;
-            set => ScanLine.PulseDuration = value;
+            get => ScanLine.TargetsThickness;
+            set => ScanLine.TargetsThickness = value;
         }
 
-        public double ScanLinePulseLength
+        public double ScanLineTargetsLength
         {
-            get => ScanLine.PulseLength;
-            set => ScanLine.PulseLength = value;
+            get => ScanLine.TargetsLength;
+            set => ScanLine.TargetsLength = value;
         }
 
         public double ScanLineTimerSpeed

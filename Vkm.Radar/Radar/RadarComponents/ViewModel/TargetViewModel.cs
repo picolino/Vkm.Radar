@@ -4,11 +4,12 @@ namespace Vkm.Radar.Radar.RadarComponents.ViewModel
 {
     internal class TargetViewModel : RadarComponentBase, IPositionalComponent, IDetectableComponent
     {
-        public TargetViewModel(double azimuth, double range, double length, double thickness, double opacity) : base(azimuth, opacity)
+        private readonly double internalLength;
+
+        public TargetViewModel(double azimuth, double range, double length, double opacity) : base(azimuth, opacity)
         {
             Range = range;
-            Length = InitialLength = length;
-            Thickness = thickness;
+            Length = internalLength = length;
         }
 
         public double Range
@@ -17,11 +18,10 @@ namespace Vkm.Radar.Radar.RadarComponents.ViewModel
             set { SetProperty(() => Range, value); }
         }
 
-        public double InitialLength { get; }
         public double Length
         {
             get { return GetProperty(() => Length); }
-            set { SetProperty(() => Length, value * 0.02); }
+            set { SetProperty(() => Length, value * internalLength * 0.02); }
         }
 
         public double Thickness

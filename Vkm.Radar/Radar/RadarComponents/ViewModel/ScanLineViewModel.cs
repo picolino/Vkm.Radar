@@ -5,21 +5,21 @@ namespace Vkm.Radar.Radar.RadarComponents.ViewModel
 {
     internal class ScanLineViewModel : RadarComponentBase, IPositionalComponent
     {
-        public ScanLineViewModel(double azimuth, double pulseDuration, double pulseLength, double opacity = 1) : base(azimuth, opacity)
+        public ScanLineViewModel(double azimuth, double targetsThickness, double targetsLength, double opacity = 1) : base(azimuth, opacity)
         {
-            PulseDuration = pulseDuration;
-            PulseLength = pulseLength;
+            TargetsThickness = targetsThickness;
+            TargetsLength = targetsLength;
         }
 
         public IEnumerable<TargetViewModel> RadarTargets { private get; set; }
 
-        public double PulseDuration
+        public double TargetsThickness
         {
-            get { return GetProperty(() => PulseDuration); }
-            set { SetProperty(() => PulseDuration, value, OnPulseDurationChanged); }
+            get { return GetProperty(() => TargetsThickness); }
+            set { SetProperty(() => TargetsThickness, value, OnTargetsThicknessChanged); }
         }
 
-        private void OnPulseDurationChanged()
+        private void OnTargetsThicknessChanged()
         {
             if (RadarTargets is null)
             {
@@ -28,17 +28,17 @@ namespace Vkm.Radar.Radar.RadarComponents.ViewModel
 
             foreach (var target in RadarTargets)
             {
-                target.Thickness = PulseDuration;
+                target.Thickness = TargetsThickness;
             }
         }
 
-        public double PulseLength
+        public double TargetsLength
         {
-            get { return GetProperty(() => PulseLength); }
-            set { SetProperty(() => PulseLength, value, OnPulseLengthChanged); }
+            get { return GetProperty(() => TargetsLength); }
+            set { SetProperty(() => TargetsLength, value, OnTargetsLengthChanged); }
         }
 
-        private void OnPulseLengthChanged()
+        private void OnTargetsLengthChanged()
         {
             if (RadarTargets is null)
             {
@@ -47,7 +47,7 @@ namespace Vkm.Radar.Radar.RadarComponents.ViewModel
 
             foreach (var target in RadarTargets)
             {
-                target.Length = target.InitialLength * PulseLength;
+                target.Length = TargetsLength;
             }
         }
 
