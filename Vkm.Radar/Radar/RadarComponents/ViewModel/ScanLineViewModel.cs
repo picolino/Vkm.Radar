@@ -5,13 +5,20 @@ namespace Vkm.Radar.Radar.RadarComponents.ViewModel
 {
     internal class ScanLineViewModel : RadarComponentBase, IPositionalComponent
     {
-        public ScanLineViewModel(double azimuth, double targetsThickness, double targetsLength, double opacity = 1) : base(azimuth, opacity)
+        public ScanLineViewModel(double azimuth, double targetsThickness, double targetsLength, double stepDegrees, double opacity = 1) : base(azimuth, opacity)
         {
             TargetsThickness = targetsThickness;
             TargetsLength = targetsLength;
+            StepDegrees = stepDegrees;
         }
 
         public IEnumerable<TargetViewModel> RadarTargets { private get; set; }
+
+        public double StepDegrees
+        {
+            get { return GetProperty(() => StepDegrees); }
+            set { SetProperty(() => StepDegrees, value); }
+        }
 
         public double TargetsThickness
         {

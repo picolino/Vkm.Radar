@@ -47,10 +47,10 @@
                 <ColumnDefinition Width="10"/>
             </Grid.ColumnDefinitions>
 
-            <Button Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Content="Добавить цель" Command="{Binding Path=CreateTargetCommand}"/>
+            <Button Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Content="Добавить случайную цель" Command="{Binding Path=CreateTargetCommand}"/>
 
             <TextBlock Grid.Row="3" Grid.Column="1" Text="Скорость вращения линии развертки:"/>
-            <Slider Grid.Row="3" Grid.Column="3" Value="{Binding Path=RadarViewModel.ScanLineTimerSpeed}" Minimum="1" Maximum="20"/>
+            <Slider Grid.Row="3" Grid.Column="3" Value="{Binding Path=RadarViewModel.ScanLineSpeed}" Minimum="0.2" Maximum="3"/>
 
             <TextBlock Grid.Row="5" Grid.Column="1" Text="Мощность передатчика:"/>
             <Slider Grid.Row="5" Grid.Column="3" Value="{Binding Path=RadarViewModel.OpacityMultiplier}" Minimum="0" Maximum="1"/>
@@ -61,7 +61,7 @@
             <TextBlock Grid.Row="9" Grid.Column="1" Text="Ширина диаграммы направленности:"/>
             <Slider Grid.Row="9" Grid.Column="3" Value="{Binding Path=RadarViewModel.TargetsLength}" Minimum="0" Maximum="2"/>
         </Grid>
-        <Grid Grid.Row="2" Margin="0 10 0 10" Grid.ColumnSpan="2">
+        <Grid Grid.Row="2" Grid.Column="0" Margin="0 10 0 10" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="10"/>
                 <ColumnDefinition/>

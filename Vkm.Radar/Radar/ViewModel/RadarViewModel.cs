@@ -21,14 +21,14 @@ namespace Vkm.Radar.Radar.ViewModel
 
         private LinkedListNode<IDetectableComponent> detectableComponent;
 
-        public RadarViewModel(double scanLineMoveInterval, bool useStructuralComponents)
+        public RadarViewModel(bool useStructuralComponents)
         {
             LoadedCommand = new DelegateCommand(OnLoaded);
 
-            ScanLineTimer = new Timer(scanLineMoveInterval);
+            ScanLineTimer = new Timer(10);
             ScanLineTimer.Elapsed += ScanLineMove;
 
-            ScanLine = new ScanLineViewModel(0, 2, 1);
+            ScanLine = new ScanLineViewModel(0, 2, 1, 1);
             Components = new ObservableCollection<IPositionalComponent>();
 
             InitializeComponents(useStructuralComponents);
@@ -172,7 +172,7 @@ namespace Vkm.Radar.Radar.ViewModel
             }
             else
             {
-                ScanLine.Azimuth += 1;
+                ScanLine.Azimuth += ScanLine.StepDegrees;
             }
 
             ScanLineAzimuth = ScanLine.Azimuth;
@@ -190,11 +190,10 @@ namespace Vkm.Radar.Radar.ViewModel
             set => ScanLine.TargetsLength = value;
         }
 
-        public double ScanLineTimerSpeed
+        public double ScanLineSpeed
         {
-            // TODO: 21 тут потому что MaxValue в MainWindow.xaml для соответствующего слайдера имеет значение 20.
-            get => 21 - ScanLineTimer.Interval; 
-            set => ScanLineTimer.Interval = 21 - value;
+            get => ScanLine.StepDegrees; 
+            set => ScanLine.StepDegrees = value;
         }
 
         public double ScanLineAzimuth
