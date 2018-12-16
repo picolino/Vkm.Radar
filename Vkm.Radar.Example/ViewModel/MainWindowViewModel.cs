@@ -6,7 +6,7 @@ using Vkm.Radar.Dialog;
 using Vkm.Radar.Radar;
 using Vkm.Radar.Radar.ViewModel;
 
-namespace Vkm.Radar.ViewModel
+namespace Vkm.Radar.Example.ViewModel
 {
     public class MainWindowViewModel : ViewModelBase
     {

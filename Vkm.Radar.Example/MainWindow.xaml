@@ -1,10 +1,10 @@
-﻿<Window x:Class="Vkm.Radar.MainWindow"
+﻿<Window x:Class="Vkm.Radar.Example.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:viewModel="clr-namespace:Vkm.Radar.ViewModel"
-        xmlns:radar="clr-namespace:Vkm.Radar.Radar"
+        xmlns:viewModel="clr-namespace:Vkm.Radar.Example.ViewModel"
+        xmlns:radar="clr-namespace:Vkm.Radar.Radar;assembly=Vkm.Radar"
         mc:Ignorable="d"
         Title="Симулятор радара" 
         ResizeMode="NoResize"
@@ -25,7 +25,7 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <radar:Radar Grid.Row="0" Margin="10" DataContext="{Binding RadarViewModel}" Grid.ColumnSpan="2"/>
-        <Grid Grid.Row="1" Grid.ColumnSpan="2">
+        <Grid Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="10"/>
                 <RowDefinition Height="Auto"/>

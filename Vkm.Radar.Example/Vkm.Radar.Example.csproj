@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F36FBED1-3205-4820-B13C-18C6FE0A3D35}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <RootNamespace>Vkm.Radar</RootNamespace>
-    <AssemblyName>Vkm.Radar</AssemblyName>
+    <ProjectGuid>{D0921259-CA6D-43D7-AB14-A7AEEAC3DAD2}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Vkm.Radar.Example</RootNamespace>
+    <AssemblyName>Vkm.Radar.Example</AssemblyName>
     <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -34,15 +34,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
-  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DevExpress.Mvvm, Version=18.1.0.0, Culture=neutral, PublicKeyToken=382ad28f6ae31f30, processorArchitecture=MSIL">
-      <HintPath>..\packages\DevExpressMvvm.18.1.3.0\lib\net40-client\DevExpress.Mvvm.dll</HintPath>
+    <Reference Include="DevExpress.Mvvm, Version=18.2.0.0, Culture=neutral, PublicKeyToken=382ad28f6ae31f30, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpressMvvm.18.2.3\lib\net452\DevExpress.Mvvm.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Mvvm.UI, Version=18.1.0.0, Culture=neutral, PublicKeyToken=382ad28f6ae31f30, processorArchitecture=MSIL">
-      <HintPath>..\packages\DevExpressMvvm.18.1.3.0\lib\net40-client\DevExpress.Mvvm.UI.dll</HintPath>
+    <Reference Include="DevExpress.Mvvm.UI, Version=18.2.0.0, Culture=neutral, PublicKeyToken=382ad28f6ae31f30, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpressMvvm.18.2.3\lib\net452\DevExpress.Mvvm.UI.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -60,65 +57,23 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Dialog\PresetSelectorDialog.xaml">
-      <SubType>Designer</SubType>
+    <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Compile Include="Converters\BaseConverter.cs" />
-    <Compile Include="Converters\DoubleInverseConverter.cs" />
-    <Compile Include="Dialog\PresetSelectorDialog.xaml.cs">
-      <DependentUpon>PresetSelectorDialog.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Radar\Common\Interfaces\INoisesFactory.cs" />
-    <Compile Include="Radar\Common\NoisesFactory.cs" />
-    <Compile Include="Radar\Constants.cs" />
-    <Compile Include="Radar\Radar.xaml.cs">
-      <DependentUpon>Radar.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Radar\RadarComponents\Noise.xaml.cs">
-      <DependentUpon>Noise.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Radar\RadarComponents\ScanLine.xaml.cs">
-      <DependentUpon>ScanLine.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Radar\RadarComponents\StructuralCircle.xaml.cs">
-      <DependentUpon>StructuralCircle.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Radar\RadarComponents\Target.xaml.cs">
-      <DependentUpon>Target.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Radar\RadarComponents\Arc.cs" />
-    <Compile Include="Radar\RadarComponents\ViewModel\IRadarComponent.cs" />
-    <Compile Include="Radar\RadarComponents\ViewModel\IStructuralComponent.cs" />
-    <Compile Include="Radar\RadarComponents\ViewModel\RadarComponentBase.cs" />
-    <Compile Include="Radar\RadarComponents\ViewModel\IDetectableComponent.cs" />
-    <Compile Include="Radar\RadarComponents\ViewModel\IPositionalComponent.cs" />
-    <Compile Include="Radar\RadarComponents\ViewModel\NoiseViewModel.cs" />
-    <Compile Include="Radar\RadarComponents\ViewModel\ScanLineViewModel.cs" />
-    <Compile Include="Radar\RadarComponents\ViewModel\StructuralCircleComponentViewModel.cs" />
-    <Compile Include="Radar\RadarComponents\ViewModel\StructuralRadialComponentViewModel.cs" />
-    <Compile Include="Radar\ViewModel\RadarViewModel.cs" />
-    <Compile Include="Radar\RadarComponents\ViewModel\TargetViewModel.cs" />
-    <Page Include="Radar\Radar.xaml">
       <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Radar\RadarComponents\Noise.xaml">
+    </ApplicationDefinition>
+    <Compile Include="ViewModel\MainWindowViewModel.cs" />
+    <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Radar\RadarComponents\ScanLine.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Radar\RadarComponents\StructuralCircle.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Radar\RadarComponents\Target.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -145,7 +100,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Radar\Images\conical-gradient.png" />
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Vkm.Radar\Vkm.Radar.csproj">
+      <Project>{f36fbed1-3205-4820-b13c-18c6fe0a3d35}</Project>
+      <Name>Vkm.Radar</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

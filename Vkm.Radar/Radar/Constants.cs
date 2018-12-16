@@ -2,7 +2,7 @@
 
 namespace Vkm.Radar.Radar
 {
-    internal class Constants
+    public class Constants
     {
         public const double RadarRadius = 250;
         public const double RadarCenterX = RadarRadius;
