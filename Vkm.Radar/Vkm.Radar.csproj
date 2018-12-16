@@ -94,6 +94,7 @@
     <Compile Include="Radar\RadarComponents\Target.xaml.cs">
       <DependentUpon>Target.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Radar\RadarComponents\Arc.cs" />
     <Compile Include="Radar\RadarComponents\ViewModel\IRadarComponent.cs" />
     <Compile Include="Radar\RadarComponents\ViewModel\IStructuralComponent.cs" />
     <Compile Include="Radar\RadarComponents\ViewModel\RadarComponentBase.cs" />

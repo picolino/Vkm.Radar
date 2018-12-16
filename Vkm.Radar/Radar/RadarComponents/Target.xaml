@@ -4,18 +4,21 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:viewModel="clr-namespace:Vkm.Radar.Radar.RadarComponents.ViewModel"
+             xmlns:radarComponents="clr-namespace:Vkm.Radar.Radar.RadarComponents"
              xmlns:converters="clr-namespace:Vkm.Radar.Converters"
              mc:Ignorable="d"
-             d:DesignHeight="450" d:DesignWidth="800"
+             d:DesignHeight="500" d:DesignWidth="500"
              d:DataContext="{d:DesignInstance Type=viewModel:TargetViewModel}" x:ClassModifier="internal">
-    <Line X1="0" Y1="{Binding Path=Length}" Y2="{Binding Path=Length, Converter={converters:DoubleInverseConverter}}"
-          RenderTransformOrigin="0.5 0.5"
-          StrokeThickness="{Binding Path=Thickness}"
-          Stroke="GreenYellow"
-          
-          Opacity="{Binding Path=Opacity}">
-        <Line.RenderTransform>
-            <RotateTransform Angle="{Binding Path=Azimuth}" />
-        </Line.RenderTransform>
-    </Line>
+    <radarComponents:Arc Center="0 0"
+                         Stroke="GreenYellow"
+                         StrokeThickness="{Binding Path=Thickness}"
+                         StartAngle="{Binding Path=Length, Converter={converters:DoubleInverseConverter} }"
+                         EndAngle="{Binding Path=Length}"
+                         SmallAngle="True"
+                         Radius="{Binding Path=Range}"
+                         Opacity="{Binding Path=Opacity}">
+        <radarComponents:Arc.RenderTransform>
+            <RotateTransform Angle="{Binding Path=Azimuth}"/>
+        </radarComponents:Arc.RenderTransform>
+    </radarComponents:Arc>
 </UserControl>
