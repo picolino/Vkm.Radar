@@ -11,7 +11,7 @@ namespace Vkm.Radar.Radar.ViewModel
 {
     public class RadarViewModel : ViewModelBase
     {
-        internal ScanLineViewModel ScanLine { get; }
+        private ScanLineViewModel ScanLine { get; }
         private Timer ScanLineTimer { get; }
 
         public ObservableCollection<IPositionalComponent> Components { get; }
@@ -42,7 +42,6 @@ namespace Vkm.Radar.Radar.ViewModel
         {
             Components.Add(ScanLine);
             DetectableComponents = new LinkedList<IDetectableComponent>();
-            UseDefaultStructuralComponents = useStructuralComponents;
             if (useStructuralComponents)
             {
                 AddDefaultStructuralComponents();
@@ -68,6 +67,32 @@ namespace Vkm.Radar.Radar.ViewModel
                              Opacity = OpacityMultiplier
                          }.GenerateNoisesCollection();
             AddComponents(noises);
+        }
+
+        public void ClearAllComponents()
+        {
+            for (var i = Components.Count - 1; i > 0; i--)
+            {
+                var component = Components[i];
+                if (component is IStructuralComponent)
+                {
+                    continue;
+                }
+                Components.RemoveAt(i);
+            }
+
+            for (var it = DetectableComponents.First; it != null;)
+            {
+                var next = it.Next;
+                if (it.Value is IStructuralComponent)
+                {
+                    it = next;
+                    continue;
+                }
+
+                DetectableComponents.Remove(it);
+                it = next;
+            }
         }
 
         private void AddDefaultStructuralComponents()
@@ -129,32 +154,6 @@ namespace Vkm.Radar.Radar.ViewModel
             }
         }
 
-        public void ClearAllComponents()
-        {
-            for (var i = Components.Count - 1; i > 0; i--)
-            {
-                var component = Components[i];
-                if (component is IStructuralComponent)
-                {
-                    continue;
-                }
-                Components.RemoveAt(i);
-            }
-
-            for (var it = DetectableComponents.First; it != null;)
-            {
-                var next = it.Next;
-                if (it.Value is IStructuralComponent)
-                {
-                    it = next;
-                    continue;
-                }
-
-                DetectableComponents.Remove(it);
-                it = next;
-            }
-        }
-
         private void OnLoaded()
         {
             ScanLineTimer.Start();
@@ -179,13 +178,13 @@ namespace Vkm.Radar.Radar.ViewModel
             ScanLineAzimuth = ScanLine.Azimuth;
         }
 
-        public double ScanLineTargetThickness
+        public double TargetsThickness
         {
             get => ScanLine.TargetsThickness;
             set => ScanLine.TargetsThickness = value;
         }
 
-        public double ScanLineTargetsLength
+        public double TargetsLength
         {
             get => ScanLine.TargetsLength;
             set => ScanLine.TargetsLength = value;
@@ -216,12 +215,6 @@ namespace Vkm.Radar.Radar.ViewModel
             {
                 component.Opacity = OpacityMultiplier;
             }
-        }
-
-        public bool UseDefaultStructuralComponents
-        {
-            get { return GetProperty(() => UseDefaultStructuralComponents); }
-            set { SetProperty(() => UseDefaultStructuralComponents, value); }
         }
     }
 }
