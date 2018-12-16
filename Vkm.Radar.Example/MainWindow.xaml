@@ -10,7 +10,8 @@
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         Height="800" 
-        Width="550">
+        Width="550"
+        Icon="logo.ico">
     <Window.DataContext>
         <viewModel:MainWindowViewModel/>
     </Window.DataContext>

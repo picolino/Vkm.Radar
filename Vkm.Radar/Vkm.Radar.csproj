@@ -37,6 +37,9 @@
   <PropertyGroup>
     <StartupObject />
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevExpress.Mvvm, Version=18.1.0.0, Culture=neutral, PublicKeyToken=382ad28f6ae31f30, processorArchitecture=MSIL">
       <HintPath>..\packages\DevExpressMvvm.18.1.3.0\lib\net40-client\DevExpress.Mvvm.dll</HintPath>
@@ -140,6 +143,8 @@
   <ItemGroup>
     <Resource Include="Radar\Images\conical-gradient.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="logo.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -12,7 +12,7 @@ namespace Vkm.Radar.Example.Dialog
             InitializeComponent();
         }
 
-        public int Result { get; private set; }
+        public int Result { get; private set; } = -1;
 
         private void OnItemSelected(object sender, RoutedEventArgs e)
         {

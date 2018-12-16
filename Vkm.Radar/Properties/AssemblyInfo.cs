@@ -8,11 +8,11 @@ using System.Windows;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Vkm.Radar")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Radar simulator")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Vkm.Radar")]
-[assembly: AssemblyCopyright("Copyright ©  2018")]
+[assembly: AssemblyCopyright("Copyright © 2018 Danila Chervonny")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

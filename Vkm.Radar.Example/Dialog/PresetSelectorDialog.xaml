@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Title="Выбор готового набора" Height="235" Width="380"
-        ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
+        ResizeMode="NoResize" WindowStartupLocation="CenterOwner"
+        Icon="../logo.ico">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="10"/>
