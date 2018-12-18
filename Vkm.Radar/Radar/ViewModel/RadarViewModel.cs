@@ -116,8 +116,8 @@ namespace Vkm.Radar.Radar.ViewModel
                 }
             }
 
-            var firstCircle = new StructuralCircleComponentViewModel(0, 0.4, 100);
-            var secondCircle = new StructuralCircleComponentViewModel(0, 0.4, 200);
+            var firstCircle = new StructuralCircleComponentViewModel(0, 0.4, 83.33);
+            var secondCircle = new StructuralCircleComponentViewModel(0, 0.4, 166.66);
             AddComponent(firstCircle);
             AddComponent(secondCircle);
         }
