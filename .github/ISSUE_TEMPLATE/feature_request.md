@@ -7,12 +7,6 @@ assignees: ''
 
 ---
 
----
-
-name: 🚀 Feature Request
-about: Want to see something new included in the Framework? Submit it!
----
-
 ## 🚀 Feature Requests
 
 <!--- Summary description of the feature --->
