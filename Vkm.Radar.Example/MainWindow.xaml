@@ -25,7 +25,10 @@
             <RowDefinition/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <radar:Radar Grid.Row="0" Margin="10" DataContext="{Binding RadarViewModel}" Grid.ColumnSpan="2"/>
+        <radar:Radar Grid.Row="0" 
+                     Margin="10" 
+                     DataContext="{Binding RadarViewModel}"
+                     Grid.ColumnSpan="2"/>
         <Grid Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="10"/>

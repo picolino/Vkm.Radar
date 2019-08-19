@@ -25,6 +25,10 @@ namespace Vkm.Radar.Radar.ViewModel
 
         private LinkedListNode<IDetectableComponent> detectableComponent;
 
+        /// <summary>
+        /// Create radar datacontext
+        /// </summary>
+        /// <param name="useStructuralComponents"></param>
         public RadarViewModel(bool useStructuralComponents)
         {
             noisesFactory = new NoisesFactory();

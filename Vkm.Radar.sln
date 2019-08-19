@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28010.2046
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29209.62
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vkm.Radar", "Vkm.Radar\Vkm.Radar.csproj", "{F36FBED1-3205-4820-B13C-18C6FE0A3D35}"
 EndProject
@@ -13,11 +13,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution files", "Solution 
 		.gitignore = .gitignore
 		license = license
 		readme.md = readme.md
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{809C2AB7-786A-4AAB-9F60-594491D75A6F}"
-	ProjectSection(SolutionItems) = preProject
-		Images\Empty-Radar.png = Images\Empty-Radar.png
 	EndProjectSection
 EndProject
 Global
@@ -37,9 +32,6 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{809C2AB7-786A-4AAB-9F60-594491D75A6F} = {FC17148D-247D-4AB3-913B-F5A1410954E4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {86FC4B88-2CAE-4894-BD28-428EFF29A219}
