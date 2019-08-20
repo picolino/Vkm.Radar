@@ -1,25 +1,25 @@
 # Vkm.Radar
-Симулятор военного радара
+Military radar simulator
 
 [![Build status](https://danila-chervonny.visualstudio.com/Vkm.Radar/_apis/build/status/Vkm.Radar%20Build)](https://danila-chervonny.visualstudio.com/Vkm.Radar/_build/latest?definitionId=2)
-## Системные требования
-|Компонент               |Версия    |
+## System requirements
+|Component               |Version   |
 |------------------------|----------|
-|Операционная система    |Windows 10|
+|Operating system        |Windows 10|
 |.NET Framework          |4.7       |
 
 <img align="right" width="400" height="400" src="https://github.com/PicOLinO/Vkm.Radar/blob/master/Images/Empty-Radar.png">
 
-## Возможности
-- Включение\отключение структурных элементов развертки радара
-- Расстановка **целей** и **помех**
-- Указание _толщины_ целей, _длины_ целей, _ширины_ помехи
-- Изменение _мощности_ облучателя
-- Изменение _скорости движения_ линии сканирования
+## Capabilities
+- Enabling\disabling background structural marking
+- Placing **targets** and **jamming signals**
+- Editing target's _thickness_, _length_ , _width_ of jamming signal
+- Editing irradiator's _power_
+- Editing scan line's _speed_
 
-_Для исследования основных функций библиотеки - можете запустить пример **Vkm.Radar.Example**_
+_To check all functions of the library - you can run an example **Vkm.Radar.Example**_
 
-## Установка
-- [Скачать](https://github.com/PicOLinO/Vkm.Radar/releases/latest) последнюю версюю **Vkm.Radar.Installer.exe**
-- Запустить и установить
-- Запустить установленный **Симулятор Радара**.
+## Installation
+- [Download](https://github.com/PicOLinO/Vkm.Radar/releases/latest) latest version of **Vkm.Radar.Installer.exe**
+- Run .exe file and install it
+- Run installed program **Симулятор Радара**.
