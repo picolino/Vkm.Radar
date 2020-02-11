@@ -1,14 +1,14 @@
 # Vkm.Radar
 Military radar simulator
 
-[![Build status](https://danila-chervonny.visualstudio.com/Vkm.Radar/_apis/build/status/Vkm.Radar%20Build)](https://danila-chervonny.visualstudio.com/Vkm.Radar/_build/latest?definitionId=2)
+[![Build status](https://picolino-dev.visualstudio.com/Vkm.Radar/_apis/build/status/Vkm.Radar%20Build)](https://picolino-dev.visualstudio.com/Vkm.Radar/_build/latest?definitionId=2)
 ## System requirements
 |Component               |Version   |
 |------------------------|----------|
 |Operating system        |Windows 10|
 |.NET Framework          |4.7.2     |
 
-<img align="right" width="400" height="400" src="https://github.com/PicOLinO/Vkm.Radar/blob/master/Images/Empty-Radar.png">
+<img align="right" width="400" height="400" src="https://github.com/picolino/Vkm.Radar/blob/master/Images/Empty-Radar.png">
 
 ## Capabilities
 - Enabling\disabling background structural marking
