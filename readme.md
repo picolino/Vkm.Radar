@@ -6,7 +6,7 @@ Military radar simulator
 |Component               |Version   |
 |------------------------|----------|
 |Operating system        |Windows 10|
-|.NET Framework          |4.7.2     |
+|.NET Framework          |4.7     |
 
 <img align="right" width="400" height="400" src="https://github.com/picolino/Vkm.Radar/blob/master/Images/Empty-Radar.png">
 
